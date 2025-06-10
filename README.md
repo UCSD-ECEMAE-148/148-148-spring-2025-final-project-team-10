@@ -54,7 +54,7 @@ INSERT IMAGE OF THE CAR HERE
 | **Mounting Board** | <img src="images/board.png" width="300" alt="Mounting-board render"> | [DXF](models/Electronics%20Mount%20Plate%20v1.dxf) |
 | **NVIDIA Jetson Nano Case** | <img src="images/jetsoncase.webp" width="300" alt="Jetson Nano case"> | [Bottom STL](models/NanoBox_Bottom_v21.stl) • [Top STL](models/NanoBox_Top_v22.stl) |
 | **GPS Mount** | <img src="images/gpsmount1.png" width="300" alt="GPS mount"> | [STL](models/gps_mount.stl) |
-| **Oak-D Lite Camera Mount** | <img src="images/cameram2.png" width="300" alt="Camera mount view 1"><br><img src="images/cameram3.png" width="300" alt="Camera mount view 2"> | [Mount STL](models/camera_mount.stl) • [Adapter 3MF](models/OAK-D Lite Adapter.3mf) |
+| **Oak-D Lite Camera Mount** | <img src="images/cameram2.png" width="300" alt="Camera mount view 1"><br><img src="images/cameram3.png" width="300" alt="Camera mount view 2"> | [Mount STL](models/camera_mount.stl) • [Adapter 3MF](models/OAK-DLiteAdapter.3mf) |
 | **ESP32 Mount** | <img src="images/ae1.png" width="300" alt="ESP32 arm"> | |
 | **ESP32 Mount – Arm** | <img src="images/arm2.png" width="300" alt="ESP32 arm"> | [STL](models/arm.stl) |
 | **ESP32 Mount – Extension** | <img src="images/e1.png" width="300" alt="ESP32 extension"> | [STL](models/extension.stl) |
