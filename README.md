@@ -1,32 +1,32 @@
 # 148-spring-2025-final-project-team-10
 INSERT IMAGE OF THE CAR HERE
 
-# Team Members
+## Team Members
 - **Efe Erturk**: BS in Computer Engineering 
 - **Etka Uzun**: BS in Aerospace Engineering
 - **Jason Junran**: BS in Computer Engineering
 - **Pushkal Mishra**: PhD in ???
   
-# Abstract
+## Abstract
 
-# Goals
+## Goals
 
-## Must Have
+### Must Have
 
-## Nice to Have
+### Nice to Have
 
-# Accomplishments
+## Accomplishments
 
-# Challenges
+## Challenges
 
-# Demo Video
+## Demo Video
 
-# Hardware
+## Hardware
 
-## Wiring
+### Wiring
 <img src="images/mae148wiring.png" width="500" alt="Wiring">
 
-## Parts
+### Parts
 
 | Part | Preview <img width="5"/> |  File |
 |------|--------------------------|----------|
@@ -41,13 +41,13 @@ INSERT IMAGE OF THE CAR HERE
 | **Power-Bank & ESP32 Case** | <img src="images/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](models/power_bank_case_1.stl) • [Top STL](models/power_bank_case_2.stl) |
 
 
-# Software
+## Software
 
-# How to Run (Step by Step)
+## How to Run (Step by Step)
 
-# Acknowledgements
+## Acknowledgements
 
-# Contacts
+## Contacts
 - Efe Erturk (eerturk@ucsd.edu)
 - Etka Uzun (muzun@ucsd.edu)
 - Jason Junran (juw070@ucsd.edu)
