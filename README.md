@@ -23,7 +23,8 @@ INSERT IMAGE OF THE CAR HERE
 
 # Hardware
 - Traxxas 1/10 Ford Fiesta® ST Rally
-- A Mounting board
+- Mounting board
+  
 
 # Software
 
