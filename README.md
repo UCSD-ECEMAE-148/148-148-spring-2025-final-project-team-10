@@ -24,7 +24,7 @@ INSERT IMAGE OF THE CAR HERE
 # Hardware
 
 ## Wiring
-
+![](images/mae148wiring.png)
 
 ## Parts
 - Traxxas 1/10 Ford Fiesta® ST Rally
