@@ -45,7 +45,7 @@ INSERT IMAGE OF THE CAR HERE
   - Extension
     ![](images/e1.png)
 - ESP32 Case
-  ![](iamges/esp2.png)
+  ![](images/esp2.png)
 - Power Bank & ESP32 Case
   ![](images/pbc1.png)
 
