@@ -1,10 +1,12 @@
 # 148-spring-2025-final-project-team-10
+INSERT IMAGE OF THE CAR HERE
 
 # Team Members
 - Efe Erturk: BS in Computer Engineering 
 - Etka Uzun: BS in Aerospace Engineering
 - Jason Junran: BS in Computer Engineering
 - Pushkal Mishra: PhD in ???
+  
 # Abstract
 
 # Goals
