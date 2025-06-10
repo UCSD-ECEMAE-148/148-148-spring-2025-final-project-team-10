@@ -2,10 +2,10 @@
 INSERT IMAGE OF THE CAR HERE
 
 # Team Members
-- Efe Erturk: BS in Computer Engineering 
-- Etka Uzun: BS in Aerospace Engineering
-- Jason Junran: BS in Computer Engineering
-- Pushkal Mishra: PhD in ???
+- **Efe Erturk**: BS in Computer Engineering 
+- **Etka Uzun**: BS in Aerospace Engineering
+- **Jason Junran**: BS in Computer Engineering
+- **Pushkal Mishra**: PhD in ???
   
 # Abstract
 
