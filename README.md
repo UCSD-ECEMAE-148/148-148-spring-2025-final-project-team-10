@@ -24,7 +24,7 @@ INSERT IMAGE OF THE CAR HERE
 # Hardware
 
 ## Wiring
-![](images/mae148wiring.png)
+<img src="images/mae148wiring.png" width="450" alt="Wiring">
 
 ## Parts
 
@@ -38,7 +38,7 @@ INSERT IMAGE OF THE CAR HERE
 | **ESP32 Mount – Arm** | <img src="images/arm2.png" width="300" alt="ESP32 arm"> | [STL](models/arm.stl) |
 | **ESP32 Mount – Extension** | <img src="images/e1.png" width="300" alt="ESP32 extension"> | [STL](models/extension.stl) |
 | **ESP32 Case** | <img src="images/esp2.png" width="300" alt="ESP32 case"> | [STL](models/esp_case_2.stl) |
-| **Power-Bank & ESP32 Case** | <img src="images/pbc1.png" width="300" alt="Power-bank case"> | [Bottom](models/power_bank_case_1.stl) • [Top](models/power_bank_case_2.stl) |
+| **Power-Bank & ESP32 Case** | <img src="images/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](models/power_bank_case_1.stl) • [Top STL](models/power_bank_case_2.stl) |
 
 
 # Software
