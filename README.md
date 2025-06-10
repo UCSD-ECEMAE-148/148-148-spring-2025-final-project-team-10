@@ -22,9 +22,21 @@ INSERT IMAGE OF THE CAR HERE
 # Demo Video
 
 # Hardware
+
+## Wiring
+
+
+## Parts
 - Traxxas 1/10 Ford Fiesta® ST Rally
 - Mounting board
-  
+- NVIDIA Jetson Nano Case
+- GPS Mount
+- Oak-d Lite Camera Mount
+- ESP32 Mount
+  - Arm
+  - Extension
+- ESP32 Case
+- Power Bank & ESP32 Case   
 
 # Software
 
