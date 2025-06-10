@@ -1,6 +1,27 @@
 # 148-spring-2025-final-project-team-10
 INSERT IMAGE OF THE CAR HERE
 
+<details>
+  <summary>Table of Contents</summary>
+
+  - [Team Members](#team-members)
+  - [Abstract](#abstract)
+  - [Goals](#goals)
+    - [Must Have](#must-have)
+    - [Nice to Have](#nice-to-have)
+  - [Accomplishments](#accomplishments)
+  - [Challenges](#challenges)
+  - [Demo Video](#demo-video)
+  - [Hardware](#hardware)
+    - [Wiring](#wiring)
+    - [Parts](#parts)
+  - [Software](#software)
+  - [How to Run (Step by Step)](#how-to-run-step-by-step)
+  - [Acknowledgements](#acknowledgements)
+  - [Contacts](#contacts)
+</details>
+
+
 ## Team Members
 - **Efe Erturk**: BS in Computer Engineering 
 - **Etka Uzun**: BS in Aerospace Engineering
