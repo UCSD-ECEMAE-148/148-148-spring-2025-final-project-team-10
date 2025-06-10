@@ -24,7 +24,7 @@ INSERT IMAGE OF THE CAR HERE
 # Hardware
 
 ## Wiring
-<img src="images/mae148wiring.png" width="450" alt="Wiring">
+<img src="images/mae148wiring.png" width="500" alt="Wiring">
 
 ## Parts
 
