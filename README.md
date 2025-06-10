@@ -27,6 +27,14 @@ INSERT IMAGE OF THE CAR HERE
 ![](images/mae148wiring.png)
 
 ## Parts
+
+| Part | CAD Model |
+|------|-----------|
+| **Electronics Mounting Plate** | <img src="images/board.png" width="360" alt="Electronics plate render"><br>[CAD File](cad/ElectronicsPlate.f3d) |
+| **NVIDIA Jetson Nano Case** | <img src="images/jetsoncase.webp" width="360" alt="NVIDIA Jetson Nano Case"><br>[CAD File](cad/CameraMount.step) |
+
+
+
 - Traxxas 1/10 Ford Fiesta® ST Rally
 - Mounting board
   ![Cut from acrylic](images/board.png)
