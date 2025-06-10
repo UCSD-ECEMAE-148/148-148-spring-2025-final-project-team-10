@@ -33,21 +33,21 @@ INSERT IMAGE OF THE CAR HERE
 - NVIDIA Jetson Nano Case
   ![https://www.thingiverse.com/thing:3518410](images/jetsoncase.webp)
 - GPS Mount
-  !(images/gpsmount1.png)
+  ![](images/gpsmount1.png)
 - Oak-d Lite Camera Mount
-  !(images/cameram2.png)
-  !(images/cameram3.png)
+  ![](images/cameram2.png)
+  ![](images/cameram3.png)
 - ESP32 Mount
-  !(images/ae1.png)
-  !(images/ae2.png)
+  ![](images/ae1.png)
+  ![](images/ae2.png)
   - Arm
-    !(images/arm1.png)
+    ![](images/arm1.png)
   - Extension
-    !(images/e1.png)
+    ![](images/e1.png)
 - ESP32 Case
-  !(iamges/esp1.png)
+  ![](iamges/esp1.png)
 - Power Bank & ESP32 Case
-  !(images/pbc1.png)
+  ![](images/pbc1.png)
 
 # Software
 
