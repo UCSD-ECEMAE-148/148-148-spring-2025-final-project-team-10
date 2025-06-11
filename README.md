@@ -1,9 +1,23 @@
-# 148-spring-2025-final-project-team-10
-INSERT IMAGE OF THE CAR HERE
+# Autonomous Car Following with Ultra-Wide Band (UWB) and Aruco Marker
+
+<div align="center">
+  <a href="https://jacobsschool.ucsd.edu/">
+    <img src="images/UCSD_logo.png" alt="Logo" width="400" height="100">
+  </a>
+  <h3>ECE/MAE-148 Final Project</h3>
+  <p>
+    Spring 2025 - Team 10
+  </p>
+  <a>
+    <img src="images/front_view.jpeg" alt="Logo">
+  </a>
+</div>
+
+<!-- Add a todo note for changing -->
+> **TODO**: Change above car image to a much cooler one and add a team photograph with the car.
 
 <details>
   <summary>Table of Contents</summary>
-
   - [Team Members](#team-members)
   - [Abstract](#abstract)
   - [Goals](#goals)
@@ -23,31 +37,54 @@ INSERT IMAGE OF THE CAR HERE
 
 
 ## Team Members
-- **Efe Erturk**: BS in Computer Engineering 
-- **Etka Uzun**: BS in Aerospace Engineering
-- **Junran "Jason" Wang**: BS in Computer Engineering
-- **Pushkal Mishra**: PhD in Wireless Sensing and ML
+- **Efe Erturk** | ECE: BS in Computer Engineering 
+- **Etka Uzun** | MAE: BS in Aerospace Engineering
+- **Junran "Jason" Wang** | ECE: BS in Computer Engineering
+- **Pushkal Mishra** | ECE: PhD in Wireless Sensing and ML
   
 ## Abstract
+In this project, we developed an autonomous car following system using Ultra-Wide Band (UWB) technology and Aruco markers. The system is designed to enable a car to autonomously follow a UWB-enabled ESP32 tag and identify the tag with an Aruco marker. Additionally, the car can also follow the aruco marker once it is in the field-of-view. The project integrates various hardware components: NVIDIA Jetson Nano, OAK-D Lite camera, 3 ESP32 microcontroller with UWB support and IMU sensor, to achieve real-time distance measurement and control.
+
+The aim of the project is to detect an ESP32 tag and autonomously drive towards it using triangulation and Aruco marker detection. The car is equipped with a camera for visual recognition and two ESP32 tags for UWB communication. The system is designed to be robust, allowing the car to follow the tag even in complex environments with non line-of-sight.
 
 ## Goals
-
 ### Must Have
+- Accurate position measurement using triangulation with UWB.
+- IMU sensor for orientation data.
+- Aruco marker detection for visual identification and driving.
+- Autonomous driving towards the detected tag.
 
 ### Nice to Have
+- Integrate both ESP32 and Aruco marker detection for robust following.
+- Real-time following of the tag.
+- LiDAR integration for obstacle avoidance.
 
 ## Accomplishments
-
-## Challenges
+- Successfully implemented UWB triangulation for accurate distance measurement.
+- IMU sensor integration for orientation data to correct for yaw of the car.
+- Car can autonomously drive to a UWB-enabled ESP32 tag even in non line-of-sight condition.
+- Aruco marker detection implemented for visual identification.
 
 ## Demo Video
+> **TODO**: Add videos of the project here.
 
-## Hardware
+## Challenges
+> **TODO**: Add challenges faced during the project.
+### Triangulation with ESP32
 
-### Wiring
-<img src="images/mae148wiring.png" width="500" alt="Wiring">
+### Driving with ESP32
 
-### Parts
+### Aruco Marker Detection
+
+## Software
+
+
+## How to Run (Step by Step)
+
+
+## Parts and Hardware
+<!-- ### Wiring
+<img src="images/mae148wiring.png" width="500" alt="Wiring"> -->
 
 | Part | Preview <img width="5"/> |  File |
 |------|--------------------------|----------|
@@ -60,11 +97,9 @@ INSERT IMAGE OF THE CAR HERE
 | **ESP32 Mount – Extension** | <img src="images/3D-Printed/e1.png" width="300" alt="ESP32 extension"> | [STL](stl-files/extension.stl) |
 | **ESP32 Case** | <img src="images/3D-Printed/esp2.png" width="300" alt="ESP32 case"> | [STL](stl-files/esp_case_2.stl) |
 | **Power-Bank & ESP32 Case** | <img src="images/3D-Printed/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](stl-files/power_bank_case_1.stl) • [Top STL](stl-files/power_bank_case_2.stl) |
+| **ESP32 with UWB** | <img src="images/esp32.jpg" width="300" alt="ESP-32"> | [Product Link](https://www.makerfabs.com/esp32-uwb-dw3000.html?srsltid=AfmBOorf-qO5e5mbXH0PJVKdmqxx--euOzTTMy_9mlpG27S6Im0cnn02) |
+| **OAK-D Camera** | <img src="images/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
 
-
-## Software
-
-## How to Run (Step by Step)
 
 ## Acknowledgements
 
