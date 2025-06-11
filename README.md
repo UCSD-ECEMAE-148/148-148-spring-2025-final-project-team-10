@@ -51,15 +51,15 @@ INSERT IMAGE OF THE CAR HERE
 
 | Part | Preview <img width="5"/> |  File |
 |------|--------------------------|----------|
-| **Mounting Board** | <img src="images/board.png" width="300" alt="Mounting-board render"> | [DXF](models/Electronics%20Mount%20Plate%20v1.dxf) |
-| **NVIDIA Jetson Nano Case** | <img src="images/jetsoncase.webp" width="300" alt="Jetson Nano case"> | [Bottom STL](models/NanoBox_Bottom_v21.stl) • [Top STL](models/NanoBox_Top_v22.stl) |
-| **GPS Mount** | <img src="images/gpsmount1.png" width="300" alt="GPS mount"> | [STL](models/gps_mount.stl) |
-| **Oak-D Lite Camera Mount** | <img src="images/cameram2.png" width="300" alt="Camera mount view 1"><br><img src="images/cameram3.png" width="300" alt="Camera mount view 2"> | [Mount STL](models/camera_mount.stl) • [Adapter 3MF](models/OAK-DLiteAdapter.3mf) |
-| **ESP32 Mount** | <img src="images/ae1.png" width="300" alt="ESP32 arm"> | |
-| **ESP32 Mount – Arm** | <img src="images/arm2.png" width="300" alt="ESP32 arm"> | [STL](models/arm.stl) |
-| **ESP32 Mount – Extension** | <img src="images/e1.png" width="300" alt="ESP32 extension"> | [STL](models/extension.stl) |
-| **ESP32 Case** | <img src="images/esp2.png" width="300" alt="ESP32 case"> | [STL](models/esp_case_2.stl) |
-| **Power-Bank & ESP32 Case** | <img src="images/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](models/power_bank_case_1.stl) • [Top STL](models/power_bank_case_2.stl) |
+| **Mounting Board** | <img src="images/3D-Printed/board.png" width="300" alt="Mounting-board render"> | [DXF](stl-files/Electronics%20Mount%20Plate%20v1.dxf) |
+| **NVIDIA Jetson Nano Case** | <img src="images/3D-Printed/jetsoncase.webp" width="300" alt="Jetson Nano case"> | [Bottom STL](stl-files/NanoBox_Bottom_v21.stl) • [Top STL](stl-files/NanoBox_Top_v22.stl) |
+| **GPS Mount** | <img src="images/3D-Printed/gpsmount1.png" width="300" alt="GPS mount"> | [STL](stl-files/gps_mount.stl) |
+| **Oak-D Lite Camera Mount** | <img src="images/3D-Printed/cameram2.png" width="300" alt="Camera mount view 1"><br><img src="images/3D-Printed/cameram3.png" width="300" alt="Camera mount view 2"> | [Mount STL](stl-files/camera_mount.stl) • [Adapter 3MF](stl-files/OAK-DLiteAdapter.3mf) |
+| **ESP32 Mount** | <img src="images/3D-Printed/ae1.png" width="300" alt="ESP32 arm"> | |
+| **ESP32 Mount – Arm** | <img src="images/3D-Printed/arm2.png" width="300" alt="ESP32 arm"> | [STL](stl-files/arm.stl) |
+| **ESP32 Mount – Extension** | <img src="images/3D-Printed/e1.png" width="300" alt="ESP32 extension"> | [STL](stl-files/extension.stl) |
+| **ESP32 Case** | <img src="images/3D-Printed/esp2.png" width="300" alt="ESP32 case"> | [STL](stl-files/esp_case_2.stl) |
+| **Power-Bank & ESP32 Case** | <img src="images/3D-Printed/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](stl-files/power_bank_case_1.stl) • [Top STL](stl-files/power_bank_case_2.stl) |
 
 
 ## Software
