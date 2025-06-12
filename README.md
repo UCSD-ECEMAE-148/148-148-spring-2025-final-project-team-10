@@ -9,7 +9,7 @@
     Spring 2025 - Team 10
   </p>
   <a>
-    <img src="media/images/car.jpg" alt="Car View">
+    <img src="media/images/car.jpg" alt="Car View" width="500">
   </a>
 </div>
 
