@@ -82,7 +82,7 @@ https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 > **TODO**: Add videos of the project here.
 
 ## Challenges
-> **TODO**: Add challenges faced during the project.
+
 ### Triangulation with ESP32
 
 ### Driving with ESP32
