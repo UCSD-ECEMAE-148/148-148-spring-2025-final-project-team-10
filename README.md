@@ -89,8 +89,11 @@ https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 In this video, the car detects an Aruco marker, reads the ID of the marker to confirm weather its a valid user to track, determines the location and orientation of the marker and correspoindingly drive towards the marker. The steering and rotation of the car is controlled in real-time to ensure that the car is always facing the marker and is at-least 30cm away from the marker. Also the car is able to follow the marker even when it is moving around. 
 
 ## Challenges Faced
-
-
+- We were limited by low range (~10m) and sometimes we wouldn't get position data due to small antenna of the dw3000 chip. 
+- Even though our individual parts worked well, our location estimation varied a lot due to added uncertanities from all of them.
+- We faced issues in integrating the transition from driving with ESP32 localization and driving with Aruco marker in the donkeycar framework.
+- When following the Aruco marker, ROS2 was very laggy, we faced this issue in our lane-following assignment also. 
+  
 
 ### Triangulation with ESP32
 
