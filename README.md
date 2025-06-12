@@ -9,12 +9,12 @@
     Spring 2025 - Team 10
   </p>
   <a>
-    <img src="images/front_view.jpeg" alt="Logo">
+    <img src="images/car.jpg" alt="Car View">
   </a>
 </div>
 
 <!-- Add a todo note for changing -->
-> **TODO**: Change above car image to a much cooler one and add a team photograph with the car.
+> **TODO**: add a team photograph with the car.
 
 <details>
   <summary>Table of Contents</summary>
