@@ -1,0 +1,25 @@
+[4.806s] Invoking command in '/home/projects/ros2_ws/src/aruco_marker': PYTHONPATH=/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/aruco_marker build --build-base /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build install --prefix /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker --record /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log --single-version-externally-managed
+[6.498s] running egg_info
+[6.501s] writing build/aruco_marker/aruco_marker.egg-info/PKG-INFO
+[6.505s] writing dependency_links to build/aruco_marker/aruco_marker.egg-info/dependency_links.txt
+[6.506s] writing entry points to build/aruco_marker/aruco_marker.egg-info/entry_points.txt
+[6.506s] writing requirements to build/aruco_marker/aruco_marker.egg-info/requires.txt
+[6.507s] writing top-level names to build/aruco_marker/aruco_marker.egg-info/top_level.txt
+[6.750s] reading manifest file 'build/aruco_marker/aruco_marker.egg-info/SOURCES.txt'
+[6.758s] writing manifest file 'build/aruco_marker/aruco_marker.egg-info/SOURCES.txt'
+[6.759s] running build
+[6.760s] running build_py
+[6.761s] copying aruco_marker/vesc_twist_node.py -> /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build/lib/aruco_marker
+[6.761s] running install
+[6.765s] running install_lib
+[6.771s] copying /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build/lib/aruco_marker/vesc_twist_node.py -> /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker
+[6.776s] byte-compiling /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker/vesc_twist_node.py to vesc_twist_node.cpython-38.pyc
+[6.787s] running install_data
+[6.791s] running install_egg_info
+[6.800s] removing '/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker-0.0.0-py3.8.egg-info' (and everything under it)
+[6.802s] Copying build/aruco_marker/aruco_marker.egg-info to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker-0.0.0-py3.8.egg-info
+[6.808s] running install_scripts
+[6.915s] Installing oakd_aruco_node script to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/aruco_marker
+[6.916s] Installing vesc_twist_node script to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/aruco_marker
+[6.917s] writing list of installed files to '/home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log'
+[7.037s] Invoked command in '/home/projects/ros2_ws/src/aruco_marker' returned '0': PYTHONPATH=/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/aruco_marker build --build-base /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build install --prefix /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker --record /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log --single-version-externally-managed

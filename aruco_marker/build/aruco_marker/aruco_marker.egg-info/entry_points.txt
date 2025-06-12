@@ -1,0 +1,4 @@
+[console_scripts]
+oakd_aruco_node = aruco_marker.oakd_aruco_node:main
+vesc_twist_node = aruco_marker.vesc_twist_node:main
+

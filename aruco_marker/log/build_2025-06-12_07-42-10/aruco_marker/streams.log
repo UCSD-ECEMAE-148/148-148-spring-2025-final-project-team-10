@@ -1,0 +1,22 @@
+[4.873s] Invoking command in '/home/projects/ros2_ws/src/aruco_marker': PYTHONPATH=/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/aruco_marker build --build-base /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build install --prefix /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker --record /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log --single-version-externally-managed
+[6.555s] running egg_info
+[6.558s] writing build/aruco_marker/aruco_marker.egg-info/PKG-INFO
+[6.561s] writing dependency_links to build/aruco_marker/aruco_marker.egg-info/dependency_links.txt
+[6.562s] writing entry points to build/aruco_marker/aruco_marker.egg-info/entry_points.txt
+[6.563s] writing requirements to build/aruco_marker/aruco_marker.egg-info/requires.txt
+[6.563s] writing top-level names to build/aruco_marker/aruco_marker.egg-info/top_level.txt
+[6.808s] reading manifest file 'build/aruco_marker/aruco_marker.egg-info/SOURCES.txt'
+[6.813s] writing manifest file 'build/aruco_marker/aruco_marker.egg-info/SOURCES.txt'
+[6.815s] running build
+[6.816s] running build_py
+[6.817s] running install
+[6.822s] running install_lib
+[6.836s] running install_data
+[6.841s] running install_egg_info
+[6.851s] removing '/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker-0.0.0-py3.8.egg-info' (and everything under it)
+[6.852s] Copying build/aruco_marker/aruco_marker.egg-info to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker-0.0.0-py3.8.egg-info
+[6.858s] running install_scripts
+[6.964s] Installing oakd_aruco_node script to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/aruco_marker
+[6.965s] Installing vesc_twist_node script to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/aruco_marker
+[6.966s] writing list of installed files to '/home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log'
+[7.085s] Invoked command in '/home/projects/ros2_ws/src/aruco_marker' returned '0': PYTHONPATH=/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/aruco_marker build --build-base /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build install --prefix /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker --record /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log --single-version-externally-managed

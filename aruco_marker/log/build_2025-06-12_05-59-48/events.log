@@ -1,0 +1,100 @@
+[0.000000] (-) TimerEvent: {}
+[0.002748] (aruco_marker) JobQueued: {'identifier': 'aruco_marker', 'dependencies': OrderedDict()}
+[0.003652] (aruco_marker) JobStarted: {'identifier': 'aruco_marker'}
+[0.099765] (-) TimerEvent: {}
+[0.201628] (-) TimerEvent: {}
+[0.304668] (-) TimerEvent: {}
+[0.407359] (-) TimerEvent: {}
+[0.510050] (-) TimerEvent: {}
+[0.616949] (-) TimerEvent: {}
+[0.719732] (-) TimerEvent: {}
+[0.822311] (-) TimerEvent: {}
+[0.924928] (-) TimerEvent: {}
+[1.027563] (-) TimerEvent: {}
+[1.130187] (-) TimerEvent: {}
+[1.232766] (-) TimerEvent: {}
+[1.335287] (-) TimerEvent: {}
+[1.437809] (-) TimerEvent: {}
+[1.540735] (-) TimerEvent: {}
+[1.643682] (-) TimerEvent: {}
+[1.746940] (-) TimerEvent: {}
+[1.849555] (-) TimerEvent: {}
+[1.954181] (-) TimerEvent: {}
+[2.056064] (-) TimerEvent: {}
+[2.158805] (-) TimerEvent: {}
+[2.265061] (-) TimerEvent: {}
+[2.366103] (-) TimerEvent: {}
+[2.467177] (-) TimerEvent: {}
+[2.569189] (-) TimerEvent: {}
+[2.672135] (-) TimerEvent: {}
+[2.774894] (-) TimerEvent: {}
+[2.877578] (-) TimerEvent: {}
+[2.980247] (-) TimerEvent: {}
+[3.082930] (-) TimerEvent: {}
+[3.185432] (-) TimerEvent: {}
+[3.288090] (-) TimerEvent: {}
+[3.390725] (-) TimerEvent: {}
+[3.493354] (-) TimerEvent: {}
+[3.596215] (-) TimerEvent: {}
+[3.698898] (-) TimerEvent: {}
+[3.801497] (-) TimerEvent: {}
+[3.904108] (-) TimerEvent: {}
+[4.006926] (-) TimerEvent: {}
+[4.109477] (-) TimerEvent: {}
+[4.212116] (-) TimerEvent: {}
+[4.314727] (-) TimerEvent: {}
+[4.417406] (-) TimerEvent: {}
+[4.520151] (-) TimerEvent: {}
+[4.622852] (-) TimerEvent: {}
+[4.725789] (-) TimerEvent: {}
+[4.828911] (-) TimerEvent: {}
+[4.908120] (aruco_marker) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', 'build/aruco_marker', 'build', '--build-base', '/home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build', 'install', '--prefix', '/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker', '--record', '/home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log', '--single-version-externally-managed'], 'cwd': '/home/projects/ros2_ws/src/aruco_marker', 'env': {'HOSTNAME': 'ucsdrobocar-148-10', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/projects/sensor2_ws/src/vesc/install/vesc_driver/lib:/home/projects/sensor2_ws/src/vesc/install/vesc_ackermann/lib:/home/projects/sensor2_ws/src/vesc/install/vesc_msgs/lib:/home/projects/sensor2_ws/src/vesc/install/teleop_tools_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/root', 'OLDPWD': '/home/projects/ros2_ws/src', 'ROS_PYTHON_VERSION': '3', 'COLCON_PREFIX_PATH': '/home/projects/rosboard_ws/install:/home/projects/sensor2_ws/src/lidars/ld06/ros2/install:/home/projects/sensor2_ws/src/vesc/install:/home/projects/ros2_ws/install:/home/projects/sensor2_ws/src/imu/artemis_openlog/install:/home/projects/sensor2_ws/src/cameras/oakd/install:/home/projects/ros2_ws/src/aruco_marker/install', 'ROS_DISTRO': 'foxy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': 'localhost:10.0', 'LANG': 'C.UTF-8', 'ROS1_DISTRO': 'noetic', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'ROS2_DISTRO': 'foxy', 'ROS_DOMAIN_ID': '96', 'AMENT_PREFIX_PATH': '/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker:/home/projects/sensor2_ws/src/cameras/oakd/install/multi_cam:/home/projects/ros2_ws/install/ucsd_robocar_sensor2_pkg:/home/projects/ros2_ws/install/ucsd_robocar_path2_pkg:/home/projects/ros2_ws/install/ucsd_robocar_nav2_pkg:/home/projects/ros2_ws/install/ucsd_robocar_lane_detection2_pkg:/home/projects/ros2_ws/install/ucsd_robocar_control2_pkg:/home/projects/ros2_ws/install/ucsd_robocar_basics2_pkg:/home/projects/ros2_ws/install/ucsd_robocar_actuator2_pkg:/home/projects/ros2_ws/install/aruco_marker:/home/projects/rosboard_ws/install/rosboard:/home/projects/sensor2_ws/src/lidars/ld06/ros2/install/ldlidar:/home/projects/sensor2_ws/src/vesc/install/vesc:/home/projects/sensor2_ws/src/vesc/install/vesc_driver:/home/projects/sensor2_ws/src/vesc/install/vesc_ackermann:/home/projects/sensor2_ws/src/vesc/install/vesc_msgs:/home/projects/sensor2_ws/src/vesc/install/teleop_tools:/home/projects/sensor2_ws/src/vesc/install/joy_teleop:/home/projects/sensor2_ws/src/vesc/install/teleop_tools_msgs:/home/projects/sensor2_ws/src/vesc/install/mouse_teleop:/home/projects/sensor2_ws/src/vesc/install/key_teleop:/home/projects/sensor2_ws/src/vesc/install/ackermann_mux:/home/projects/sensor2_ws/src/imu/artemis_openlog/install/razor_imu_9dof:/opt/ros/foxy', 'PWD': '/home/projects/ros2_ws/src/aruco_marker/build/aruco_marker', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages:/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages:/home/projects/sensor2_ws/src/cameras/oakd/install/multi_cam/lib/python3.8/site-packages:/home/projects/ros2_ws/install/ucsd_robocar_sensor2_pkg/lib/python3.8/site-packages:/home/projects/ros2_ws/install/ucsd_robocar_path2_pkg/lib/python3.8/site-packages:/home/projects/ros2_ws/install/ucsd_robocar_nav2_pkg/lib/python3.8/site-packages:/home/projects/ros2_ws/install/ucsd_robocar_lane_detection2_pkg/lib/python3.8/site-packages:/home/projects/ros2_ws/install/ucsd_robocar_control2_pkg/lib/python3.8/site-packages:/home/projects/ros2_ws/install/ucsd_robocar_basics2_pkg/lib/python3.8/site-packages:/home/projects/ros2_ws/install/ucsd_robocar_actuator2_pkg/lib/python3.8/site-packages:/home/projects/ros2_ws/install/aruco_marker/lib/python3.8/site-packages:/home/projects/rosboard_ws/install/rosboard/lib/python3.8/site-packages:/home/projects/sensor2_ws/src/vesc/install/vesc_msgs/lib/python3.8/site-packages:/home/projects/sensor2_ws/src/vesc/install/joy_teleop/lib/python3.8/site-packages:/home/projects/sensor2_ws/src/vesc/install/teleop_tools_msgs/lib/python3.8/site-packages:/home/projects/sensor2_ws/src/vesc/install/mouse_teleop/lib/python3.8/site-packages:/home/projects/sensor2_ws/src/vesc/install/key_teleop/lib/python3.8/site-packages:/home/projects/sensor2_ws/src/imu/artemis_openlog/install/razor_imu_9dof/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/projects/sensor2_ws/src/lidars/ld06/ros2/install/ldlidar:/home/projects/sensor2_ws/src/vesc/install/vesc:/home/projects/sensor2_ws/src/vesc/install/vesc_driver:/home/projects/sensor2_ws/src/vesc/install/vesc_ackermann:/home/projects/sensor2_ws/src/vesc/install/vesc_msgs:/home/projects/sensor2_ws/src/vesc/install/teleop_tools:/home/projects/sensor2_ws/src/vesc/install/teleop_tools_msgs:/home/projects/sensor2_ws/src/vesc/install/ackermann_mux'}, 'shell': False}
+[4.929328] (-) TimerEvent: {}
+[5.034323] (-) TimerEvent: {}
+[5.137891] (-) TimerEvent: {}
+[5.241312] (-) TimerEvent: {}
+[5.344695] (-) TimerEvent: {}
+[5.448043] (-) TimerEvent: {}
+[5.551030] (-) TimerEvent: {}
+[5.657766] (-) TimerEvent: {}
+[5.760653] (-) TimerEvent: {}
+[5.863371] (-) TimerEvent: {}
+[5.966016] (-) TimerEvent: {}
+[6.068623] (-) TimerEvent: {}
+[6.171265] (-) TimerEvent: {}
+[6.273817] (-) TimerEvent: {}
+[6.376521] (-) TimerEvent: {}
+[6.477246] (-) TimerEvent: {}
+[6.579985] (-) TimerEvent: {}
+[6.600108] (aruco_marker) StdoutLine: {'line': b'running egg_info\n'}
+[6.604298] (aruco_marker) StdoutLine: {'line': b'writing build/aruco_marker/aruco_marker.egg-info/PKG-INFO\n'}
+[6.606380] (aruco_marker) StdoutLine: {'line': b'writing dependency_links to build/aruco_marker/aruco_marker.egg-info/dependency_links.txt\n'}
+[6.607578] (aruco_marker) StdoutLine: {'line': b'writing entry points to build/aruco_marker/aruco_marker.egg-info/entry_points.txt\n'}
+[6.608157] (aruco_marker) StdoutLine: {'line': b'writing requirements to build/aruco_marker/aruco_marker.egg-info/requires.txt\n'}
+[6.608696] (aruco_marker) StdoutLine: {'line': b'writing top-level names to build/aruco_marker/aruco_marker.egg-info/top_level.txt\n'}
+[6.680153] (-) TimerEvent: {}
+[6.782876] (-) TimerEvent: {}
+[6.852230] (aruco_marker) StdoutLine: {'line': b"reading manifest file 'build/aruco_marker/aruco_marker.egg-info/SOURCES.txt'\n"}
+[6.857988] (aruco_marker) StdoutLine: {'line': b"writing manifest file 'build/aruco_marker/aruco_marker.egg-info/SOURCES.txt'\n"}
+[6.860320] (aruco_marker) StdoutLine: {'line': b'running build\n'}
+[6.860918] (aruco_marker) StdoutLine: {'line': b'running build_py\n'}
+[6.861624] (aruco_marker) StdoutLine: {'line': b'copying aruco_marker/vesc_twist_node.py -> /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build/lib/aruco_marker\n'}
+[6.862183] (aruco_marker) StdoutLine: {'line': b'running install\n'}
+[6.866850] (aruco_marker) StdoutLine: {'line': b'running install_lib\n'}
+[6.873307] (aruco_marker) StdoutLine: {'line': b'copying /home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/build/lib/aruco_marker/vesc_twist_node.py -> /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker\n'}
+[6.877797] (aruco_marker) StdoutLine: {'line': b'byte-compiling /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker/vesc_twist_node.py to vesc_twist_node.cpython-38.pyc\n'}
+[6.883163] (-) TimerEvent: {}
+[6.888829] (aruco_marker) StdoutLine: {'line': b'running install_data\n'}
+[6.892575] (aruco_marker) StdoutLine: {'line': b'running install_egg_info\n'}
+[6.902313] (aruco_marker) StdoutLine: {'line': b"removing '/home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[6.904194] (aruco_marker) StdoutLine: {'line': b'Copying build/aruco_marker/aruco_marker.egg-info to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/python3.8/site-packages/aruco_marker-0.0.0-py3.8.egg-info\n'}
+[6.909603] (aruco_marker) StdoutLine: {'line': b'running install_scripts\n'}
+[6.983344] (-) TimerEvent: {}
+[7.014476] (aruco_marker) StdoutLine: {'line': b'Installing oakd_aruco_node script to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/aruco_marker\n'}
+[7.016697] (aruco_marker) StdoutLine: {'line': b'Installing vesc_twist_node script to /home/projects/ros2_ws/src/aruco_marker/install/aruco_marker/lib/aruco_marker\n'}
+[7.017511] (aruco_marker) StdoutLine: {'line': b"writing list of installed files to '/home/projects/ros2_ws/src/aruco_marker/build/aruco_marker/install.log'\n"}
+[7.083548] (-) TimerEvent: {}
+[7.138764] (aruco_marker) CommandEnded: {'returncode': 0}
+[7.187126] (-) TimerEvent: {}
+[7.216701] (aruco_marker) JobEnded: {'identifier': 'aruco_marker', 'rc': 0}
+[7.222830] (-) EventReactorShutdown: {}

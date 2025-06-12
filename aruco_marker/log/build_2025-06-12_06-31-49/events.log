@@ -1,0 +1,16 @@
+[0.000000] (-) TimerEvent: {}
+[0.001967] (aruco_marker) JobQueued: {'identifier': 'aruco_marker', 'dependencies': OrderedDict()}
+[0.003275] (aruco_marker) JobStarted: {'identifier': 'aruco_marker'}
+[0.098739] (-) TimerEvent: {}
+[0.199675] (-) TimerEvent: {}
+[0.302719] (-) TimerEvent: {}
+[0.405379] (-) TimerEvent: {}
+[0.508172] (-) TimerEvent: {}
+[0.611171] (-) TimerEvent: {}
+[0.719564] (-) TimerEvent: {}
+[0.822363] (-) TimerEvent: {}
+[0.925166] (-) TimerEvent: {}
+[1.028092] (-) TimerEvent: {}
+[1.127267] (aruco_marker) JobEnded: {'identifier': 'aruco_marker', 'rc': 0}
+[1.132380] (-) TimerEvent: {}
+[1.132929] (-) EventReactorShutdown: {}
