@@ -9,12 +9,11 @@
     Spring 2025 - Team 10
   </p>
   <a>
-    <img src="media/images/car.jpg" alt="Car View" width="500">
+    <img src="media/images/car.jpg" alt="Car View" height="418">
+    <img src="media/images/team.jpeg" alt="Team-10 Group Photo" width="500" />
+
   </a>
 </div>
-
-<!-- Add a todo note for changing -->
-> **TODO**: add a team photograph with the car.
 
 <details>
   <summary>Table of Contents</summary>
