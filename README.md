@@ -61,11 +61,22 @@ The aim of the project is to detect an ESP32 tag and autonomously drive towards 
 
 ## Accomplishments
 - Successfully implemented UWB triangulation for accurate distance measurement.
+
+https://github.com/user-attachments/assets/99eae474-88a1-4db3-a036-837bd43ad0e0
+
 - IMU sensor integration for orientation data to correct for yaw of the car.
+
+https://github.com/user-attachments/assets/ff7656d6-d6ba-4912-a2eb-ccfd36a7f4ab
+
 - Car can autonomously drive to a UWB-enabled ESP32 tag even in non line-of-sight condition.
+
+https://github.com/user-attachments/assets/dc13d5db-3512-4963-a193-890831c27531
+
+https://github.com/user-attachments/assets/731a74e7-a74d-4a91-b878-ca56320b25f8
+
 - Aruco marker detection implemented for visual identification.
 
-https://github.com/user-attachments/assets/02d21479-538f-4fbb-b0d2-648dc27bcf0b
+https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 
 ## Demo Video
 > **TODO**: Add videos of the project here.
