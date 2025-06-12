@@ -89,7 +89,9 @@ https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 In this video, the car detects an Aruco marker, reads the ID of the marker to confirm weather its a valid user to track, determines the location and orientation of the marker and correspoindingly drive towards the marker. The steering and rotation of the car is controlled in real-time to ensure that the car is always facing the marker and is at-least 30cm away from the marker. Also the car is able to follow the marker even when it is moving around. 
 
 ## Challenges Faced
-> **TODO**: Add challenges faced during the project.
+
+
+
 ### Triangulation with ESP32
 
 ### Driving with ESP32
@@ -119,7 +121,7 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 </div>
 
 ## Acknowledgements
-
+Special thanks to Professor Jack Silberman and our TAs, Alex and Winston
 ## Contacts
 - Pushkal Mishra (pumishra@ucsd.edu)
 - Efe Erturk (eerturk@ucsd.edu)
