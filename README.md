@@ -64,22 +64,35 @@ The aim of the project is to detect an ESP32 tag and autonomously drive towards 
 
 https://github.com/user-attachments/assets/99eae474-88a1-4db3-a036-837bd43ad0e0
 
+In this video, we are plotting the location of the ESP32 tag predicted in real-time using the UWB triangulation. The car is placed on a desk and the tag is continuously moved around the environment and the location of the tag is plotted in real-time from the jetson connected to a monitor. 
+
 - IMU sensor integration for orientation data to correct for yaw of the car.
 
 https://github.com/user-attachments/assets/ff7656d6-d6ba-4912-a2eb-ccfd36a7f4ab
 
+In this video, we are demonstrating the robustness of location prediction using sensor fusion with IMU and UWB triangulation. The car is placed on a stand and the tag is kept stationary. As the car is rotated around, the predicted location of the tag remains stable, demonstrating the robustness of measured angular deviation using the IMU sensor. This is crucial for accurate navigation and control of the car.
+
 - Car can autonomously drive to a UWB-enabled ESP32 tag even in non line-of-sight condition.
+
+https://github.com/user-attachments/assets/731a74e7-a74d-4a91-b878-ca56320b25f8
+
+In this video, the car autonomously detects, generates waypoints and drives towards the ESP32 tag kept on the ground. This is a line-of-sight condition where there are no obstacles in the way between the car and the tag, and the car can safely drive towards the tag. 
 
 https://github.com/user-attachments/assets/dc13d5db-3512-4963-a193-890831c27531
 
-https://github.com/user-attachments/assets/731a74e7-a74d-4a91-b878-ca56320b25f8
+In this video also the car detects the tag and drives towards it. However, this is a non line-of-sight condition where there is an obstacle in between the car and the tag, and the car generates curved waypoints around the obstacle to reach the tag.
 
 - Aruco marker detection implemented for visual identification.
 
 https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 
-## Demo Video
-> **TODO**: Add videos of the project here.
+In this video, the car detects an Aruco marker, reads the ID of the marker to confirm weather its a valid user to track, determines the location and orientation of the marker and correspoindingly generates waypoints to drive towards the marker. 
+
+
+## Software
+
+
+## How to Run (Step by Step)
 
 ## Challenges
 > **TODO**: Add challenges faced during the project.
@@ -89,15 +102,7 @@ https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 
 ### Aruco Marker Detection
 
-## Software
-
-
-## How to Run (Step by Step)
-
-
 ## Parts and Hardware
-<!-- ### Wiring
-<img src="media/images/mae148wiring.png" width="500" alt="Wiring"> -->
 
 | Part | Preview <img width="5"/> |  File |
 |------|--------------------------|----------|
@@ -114,6 +119,10 @@ https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 | **OAK-D Camera** | <img src="media/images/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
 | **IMU** | <img src="media/images/imu.webp" width="300" alt="ESP-32"> | [Product Link](https://wiki.seeedstudio.com/XIAO_BLE/) |
 
+### Wiring
+<div align="center">
+  <img src="media/images/mae148wiring.png" width="500" alt="Wiring">
+</div>
 
 ## Acknowledgements
 
