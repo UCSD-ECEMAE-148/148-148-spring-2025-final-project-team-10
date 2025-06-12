@@ -1,4 +1,4 @@
-# Autonomous Car Following with Ultra-Wide Band (UWB) and Aruco Marker
+# Autonomous Driving with Ultra-Wide Band (UWB) and Aruco Marker
 
 <div align="center">
   <a href="https://jacobsschool.ucsd.edu/">
@@ -64,13 +64,13 @@ The aim of the project is to detect an ESP32 tag and autonomously drive towards 
 
 https://github.com/user-attachments/assets/99eae474-88a1-4db3-a036-837bd43ad0e0
 
-In this video, we are plotting the location of the ESP32 tag predicted in real-time using the UWB triangulation. The car is placed on a desk and the tag is continuously moved around the environment and the location of the tag is plotted in real-time from the jetson connected to a monitor. 
+In this video, we are plotting the location of the ESP32 tag predicted in real-time using the UWB triangulation. The car is placed on a desk and the tag is continuously moved around the environment and the location of the tag is plotted in real-time from the jetson connected to a monitor. In the plot, you can see two red dots representing the tags on the car and the blue dot representing the predicted location of the tag. The car is able to accurately predict the location of the tag even when it is moved around.
 
 - IMU sensor integration for orientation data to correct for yaw of the car.
 
 https://github.com/user-attachments/assets/ff7656d6-d6ba-4912-a2eb-ccfd36a7f4ab
 
-In this video, we are demonstrating the robustness of location prediction using sensor fusion with IMU and UWB triangulation. The car is placed on a stand and the tag is kept stationary. As the car is rotated around, the predicted location of the tag remains stable, demonstrating the robustness of measured angular deviation using the IMU sensor. This is crucial for accurate navigation and control of the car.
+In this video, we are demonstrating the robustness of location prediction using sensor fusion with IMU and UWB triangulation. The car is placed on a stand and the tag is kept stationary. As the car is rotated around, the predicted location of the tag remains stable, demonstrating the robustness of measured angular deviation using the IMU sensor. This is crucial for accurate navigation as we need to calculate the angle that the car has rotated to accurately predict the location of the tag. 
 
 - Car can autonomously drive to a UWB-enabled ESP32 tag even in non line-of-sight condition.
 
@@ -86,15 +86,9 @@ In this video also the car detects the tag and drives towards it. However, this 
 
 https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 
-In this video, the car detects an Aruco marker, reads the ID of the marker to confirm weather its a valid user to track, determines the location and orientation of the marker and correspoindingly generates waypoints to drive towards the marker. 
+In this video, the car detects an Aruco marker, reads the ID of the marker to confirm weather its a valid user to track, determines the location and orientation of the marker and correspoindingly drive towards the marker. The steering and rotation of the car is controlled in real-time to ensure that the car is always facing the marker and is at-least 30cm away from the marker. Also the car is able to follow the marker even when it is moving around. 
 
-
-## Software
-
-
-## How to Run (Step by Step)
-
-## Challenges
+## Challenges Faced
 > **TODO**: Add challenges faced during the project.
 ### Triangulation with ESP32
 
@@ -127,7 +121,7 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 ## Acknowledgements
 
 ## Contacts
-- Efe Erturk (eerturk@ucsd.edu)
-- Etka Uzun (muzun@ucsd.edu)
-- Jason Junran (juw070@ucsd.edu)
 - Pushkal Mishra (pumishra@ucsd.edu)
+- Efe Erturk (eerturk@ucsd.edu)
+- Jason Junran (juw070@ucsd.edu)
+- Etka Uzun (muzun@ucsd.edu)
