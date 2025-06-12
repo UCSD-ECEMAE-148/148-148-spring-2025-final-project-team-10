@@ -99,6 +99,7 @@ The aim of the project is to detect an ESP32 tag and autonomously drive towards 
 | **Power-Bank & ESP32 Case** | <img src="images/3D-Printed/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](stl-files/power_bank_case_1.stl) • [Top STL](stl-files/power_bank_case_2.stl) |
 | **ESP32 with UWB** | <img src="images/esp32.jpg" width="300" alt="ESP-32"> | [Product Link](https://www.makerfabs.com/esp32-uwb-dw3000.html?srsltid=AfmBOorf-qO5e5mbXH0PJVKdmqxx--euOzTTMy_9mlpG27S6Im0cnn02) |
 | **OAK-D Camera** | <img src="images/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
+| **IMU** | <img src="images/imu.webp" width="300" alt="ESP-32"> | [Product Link](https://wiki.seeedstudio.com/XIAO_BLE/) |
 
 
 ## Acknowledgements
