@@ -69,7 +69,7 @@ The aim of the project is to detect an ESP32 tag and autonomously drive towards 
 > **TODO**: Add videos of the project here.
 
 ## Challenges
-> **TODO**: Add challenges faced during the project.
+
 ### Triangulation with ESP32
 
 ### Driving with ESP32
