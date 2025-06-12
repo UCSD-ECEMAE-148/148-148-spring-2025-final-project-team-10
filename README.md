@@ -2,14 +2,14 @@
 
 <div align="center">
   <a href="https://jacobsschool.ucsd.edu/">
-    <img src="images/UCSD_logo.png" alt="Logo" width="400" height="100">
+    <img src="media/images/UCSD_logo.png" alt="Logo" width="400" height="100">
   </a>
   <h3>ECE/MAE-148 Final Project</h3>
   <p>
     Spring 2025 - Team 10
   </p>
   <a>
-    <img src="images/car.jpg" alt="Car View">
+    <img src="media/images/car.jpg" alt="Car View">
   </a>
 </div>
 
@@ -84,22 +84,22 @@ The aim of the project is to detect an ESP32 tag and autonomously drive towards 
 
 ## Parts and Hardware
 <!-- ### Wiring
-<img src="images/mae148wiring.png" width="500" alt="Wiring"> -->
+<img src="media/images/mae148wiring.png" width="500" alt="Wiring"> -->
 
 | Part | Preview <img width="5"/> |  File |
 |------|--------------------------|----------|
-| **Mounting Board** | <img src="images/3D-Printed/board.png" width="300" alt="Mounting-board render"> | [DXF](stl-files/Electronics%20Mount%20Plate%20v1.dxf) |
-| **NVIDIA Jetson Nano Case** | <img src="images/3D-Printed/jetsoncase.webp" width="300" alt="Jetson Nano case"> | [Bottom STL](stl-files/NanoBox_Bottom_v21.stl) • [Top STL](stl-files/NanoBox_Top_v22.stl) |
-| **GPS Mount** | <img src="images/3D-Printed/gpsmount1.png" width="300" alt="GPS mount"> | [STL](stl-files/gps_mount.stl) |
-| **Oak-D Lite Camera Mount** | <img src="images/3D-Printed/cameram2.png" width="300" alt="Camera mount view 1"><br><img src="images/3D-Printed/cameram3.png" width="300" alt="Camera mount view 2"> | [Mount STL](stl-files/camera_mount.stl) • [Adapter 3MF](stl-files/OAK-DLiteAdapter.3mf) |
-| **ESP32 Mount** | <img src="images/3D-Printed/ae1.png" width="300" alt="ESP32 arm"> | |
-| **ESP32 Mount – Arm** | <img src="images/3D-Printed/arm2.png" width="300" alt="ESP32 arm"> | [STL](stl-files/arm.stl) |
-| **ESP32 Mount – Extension** | <img src="images/3D-Printed/e1.png" width="300" alt="ESP32 extension"> | [STL](stl-files/extension.stl) |
-| **ESP32 Case** | <img src="images/3D-Printed/esp2.png" width="300" alt="ESP32 case"> | [STL](stl-files/esp_case_2.stl) |
-| **Power-Bank & ESP32 Case** | <img src="images/3D-Printed/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](stl-files/power_bank_case_1.stl) • [Top STL](stl-files/power_bank_case_2.stl) |
-| **ESP32 with UWB** | <img src="images/esp32.jpg" width="300" alt="ESP-32"> | [Product Link](https://www.makerfabs.com/esp32-uwb-dw3000.html?srsltid=AfmBOorf-qO5e5mbXH0PJVKdmqxx--euOzTTMy_9mlpG27S6Im0cnn02) |
-| **OAK-D Camera** | <img src="images/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
-| **IMU** | <img src="images/imu.webp" width="300" alt="ESP-32"> | [Product Link](https://wiki.seeedstudio.com/XIAO_BLE/) |
+| **Mounting Board** | <img src="media/images/3D-Printed/board.png" width="300" alt="Mounting-board render"> | [DXF](media/stl-files/Electronics%20Mount%20Plate%20v1.dxf) |
+| **NVIDIA Jetson Nano Case** | <img src="media/images/3D-Printed/jetsoncase.webp" width="300" alt="Jetson Nano case"> | [Bottom STL](media/stl-files/NanoBox_Bottom_v21.stl) • [Top STL](media/stl-files/NanoBox_Top_v22.stl) |
+| **GPS Mount** | <img src="media/images/3D-Printed/gpsmount1.png" width="300" alt="GPS mount"> | [STL](media/stl-files/gps_mount.stl) |
+| **Oak-D Lite Camera Mount** | <img src="media/images/3D-Printed/cameram2.png" width="300" alt="Camera mount view 1"><br><img src="media/images/3D-Printed/cameram3.png" width="300" alt="Camera mount view 2"> | [Mount STL](media/stl-files/camera_mount.stl) • [Adapter 3MF](media/stl-files/OAK-DLiteAdapter.3mf) |
+| **ESP32 Mount** | <img src="media/images/3D-Printed/ae1.png" width="300" alt="ESP32 arm"> | |
+| **ESP32 Mount – Arm** | <img src="media/images/3D-Printed/arm2.png" width="300" alt="ESP32 arm"> | [STL](media/stl-files/arm.stl) |
+| **ESP32 Mount – Extension** | <img src="media/images/3D-Printed/e1.png" width="300" alt="ESP32 extension"> | [STL](media/stl-files/extension.stl) |
+| **ESP32 Case** | <img src="media/images/3D-Printed/esp2.png" width="300" alt="ESP32 case"> | [STL](media/stl-files/esp_case_2.stl) |
+| **Power-Bank & ESP32 Case** | <img src="media/images/3D-Printed/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](media/stl-files/power_bank_case_1.stl) • [Top STL](media/stl-files/power_bank_case_2.stl) |
+| **ESP32 with UWB** | <img src="media/images/esp32.jpg" width="300" alt="ESP-32"> | [Product Link](https://www.makerfabs.com/esp32-uwb-dw3000.html?srsltid=AfmBOorf-qO5e5mbXH0PJVKdmqxx--euOzTTMy_9mlpG27S6Im0cnn02) |
+| **OAK-D Camera** | <img src="media/images/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
+| **IMU** | <img src="media/images/imu.webp" width="300" alt="ESP-32"> | [Product Link](https://wiki.seeedstudio.com/XIAO_BLE/) |
 
 
 ## Acknowledgements
