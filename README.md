@@ -148,6 +148,185 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 
 ### Driving the Car with Aruco Marker:
 > **TODO**: Jason please add the steps: Pulling the container, copying over the code, running ROS2 using bash script.
+> Step 1: Pull the Robocar Docker Image
+```bash
+docker pull djnighti/ucsd_robocar:devel
+```
+🖥️ Step 2: Enable X11 Forwarding
+
+This allows ROS2 nodes that rely on GUI output (like image windows) to display properly.
+
+On your host machine:
+```bash
+ssh -X jetson@<jetson_ip_address>
+```
+On the Jetson (do once):
+```bash
+sudo usermod -aG docker ${USER}
+su - ${USER}
+```
+Now test X11:
+```bash
+xeyes  # If googly eyes appear, you're good!
+```
+Optional: You may need to run this if facing issues:
+```bash
+sudo apt-get install --reinstall xserver-xorg
+sudo chmod 777 .Xauthority
+```
+Step 3: Update Docker Daemon (NVIDIA Runtime Support)
+```bash
+sudo rm /etc/docker/daemon.json
+sudo nano /etc/docker/daemon.json
+```
+Paste:
+```bash
+{
+  "runtimes": {
+    "nvidia": {
+      "path": "nvidia-container-runtime",
+      "runtimeArgs": []
+    }
+  },
+  "default-runtime": "nvidia"
+}
+```
+Then:
+```bash
+sudo reboot now
+```
+Step 4: Add robocar_docker Function
+```bash
+gedit ~/.bashrc
+```
+Append this function:
+```bash
+robocar_docker () {
+  docker run \
+    --name ${1} \
+    -it \
+    --privileged \
+    --net=host \
+    -e DISPLAY=$DISPLAY \
+    -v /dev/bus/usb:/dev/bus/usb \
+    --device-cgroup-rule='c 189:* rmw' \
+    --device /dev/video0 \
+    --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
+    djnighti/ucsd_robocar:${2:-devel}
+}
+```
+Apply changes:
+```bash
+source ~/.bashrc
+```
+Now launch Docker container:
+
+robocar_docker test_container
+
+In new terminals:
+```bash
+docker start test_container
+docker exec -it test_container bash
+```
+Step 5: Create ROS2 Package for Aruco
+
+Inside the container:
+```bash
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python aruco_marker --dependencies rclpy sensor_msgs geometry_msgs std_msgs
+```
+Then clone your Python node scripts:
+```bash
+cd aruco_marker
+mkdir aruco_marker
+cd aruco_marker
+# Add your Python scripts here and clone the vesc_submodule:
+git clone <oakd_aruco_node.py_url> oakd_aruco_node.py
+git clone <vesc_twist_node.py_url> esc_twist_node.py
+git clone <vesc_submodule_repo_url> vesc_submodule
+```
+Update setup.py:
+```bash
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=[package_name, f'{package_name}.vesc_submodule'],
+    data_files=[
+        ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', glob('launch/*.launch.py')),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='yourname',
+    maintainer_email='your@email.com',
+    description='ArUco detection and VESC control node',
+    license='TODO',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'oakd_aruco_node = aruco_marker.oakd_aruco_node:main',
+            'vesc_twist_node = aruco_marker.vesc_twist_node:main'
+        ],
+    },
+)
+```
+Add __init__.py files in both aruco_marker/ and any submodules.
+
+Step 6: Create Launch File
+
+Create launch/duo_node.launch.py:
+```bash
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='aruco_marker',
+            executable='oakd_aruco_node',
+            name='oakd_tracker',
+            output='screen'
+        ),
+        Node(
+            package='aruco_marker',
+            executable='vesc_twist_node',
+            name='vesc_controller',
+            output='screen'
+        )
+    ])
+```
+Step 7: Build, Source, and Launch
+
+From inside Docker:
+```bash
+source_ros2
+cd ~/ros2_ws
+colcon build
+source install/setup.bash
+ros2 launch aruco_marker duo_node_.launch.py
+```
+Step 8 (Optional but recommend): Create a bash script for easy source, build, and launch
+
+Create a bash script
+```bash
+touch run_ros2.sh
+```
+
+Content in the bash script
+```bash
+#!/bin/bash
+source install/setup.bash
+colcon build --packages-select aruco_marker
+source install/setup.bash
+ros2 launch aruco_marker duo_nodes.launch.py
+```
+
+Step 9: use run_ros2 inside ros2_ws/src/aruco_marker/aruco_marker
+
+```bash
+bash run_ros2.sh
+```
+You should now see both the Aruco detection and the VESC command node running simultaneously.
 
 ## Code Documentation
 ### Driving with ESP32
