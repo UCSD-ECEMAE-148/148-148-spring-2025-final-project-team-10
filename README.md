@@ -190,7 +190,7 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
   - We are using nRF52840 Sense IMU with 6 DOF, which supports acceleration and gyroscope data in x, y, z axes.
   - This figure shows the change in angular acceleration of as the IMU is rotated:
     <div align="center">
-      <img src="media/images/IMU_figure2.JPG" width="500" alt="Triangulation Algorithm">
+      <img src="media/images/IMU_figure2.JPG" width="500" alt="IMU Integation">
     </div>
   - The Z-axis gyroscope data (gz) is used to estimate the yaw angle (rotation around the vertical axis) by integrating angular velocity over time.
   - The yaw is normalized to a 0–360° range and transmitted to the jetson via serial monitor every 50 ms.
