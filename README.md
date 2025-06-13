@@ -25,11 +25,19 @@
     - [Nice to Have](#nice-to-have)
   - [Accomplishments](#accomplishments)
   - [Challenges Faced](#challenges-faced)
-    - [Triangulation with ESP32](#triangulation-with-esp32)
+  - [Step-by-Step Running Instructions](#step-by-step-running-instructions)
+    - [Hardware Setup](#hardware-setup)
+    - [Software Setup](#software-setup)
+    - [Plotting Live Location from ESP32](#plotting-live-location-from-esp32)
+    - [Driving the Car with ESP32](#driving-the-car-with-esp32)
+    - [Driving the Car with Aruco Marker](#driving-the-car-with-aruco-marker)
+  - [Code Documentation](#code-documentation)
     - [Driving with ESP32](#driving-with-esp32)
-    - [Aruco Marker Detection](#aruco-marker-detection)
-  - [Parts and Hardware](#parts-and-hardware)
+    - [Driving with Aruco Marker](#driving-with-aruco-marker)
+  - [Hardware Used](#hardware-used)
+    - [Parts](#parts)
     - [Wiring](#wiring)
+  - [Gantt Chart](#gantt-chart)
   - [Acknowledgements](#acknowledgements)
   - [Contacts](#contacts)
 
@@ -94,9 +102,54 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 - We faced issues in integrating the transition from driving with ESP32 localization and driving with Aruco marker in the donkeycar framework.
 - When following the Aruco marker, ROS2 was very laggy, we faced this issue in our lane-following assignment also. Might need to use an updated Jetson or larger SD card.
 
-## Code Documentation
-### Step-by-Step Running Instructions
+## Step-by-Step Running Instructions
+### Hardware Setup
+- Use the provided 3D-printed parts to mount the NVIDIA Jetson Nano, OAK-D Lite camera, ESP32 tags, and IMU sensor on the car.
+- Connect the two ESP32 tags, OAK-D Lite Camera, and IMU sensor to the Jetson using cables.
+- Ensure that the ESP32 tags are securely mounted and connected to Jetson.
+- Connect the dongle for the controller to the Jetson Nano.
 
+### Software Setup:
+- First you need to install Arduino CLI, DW3000 library and IMU on the jetson nano. This can be found in the links: [Arduino CLI](https://arduino.github.io/arduino-cli/0.35/installation/), [DW3000 Library](https://github.com/Makerfabs/Makerfabs-ESP32-UWB-DW3000) and [IMU Library](https://wiki.seeedstudio.com/XIAO_BLE/)
+- Clone this repository to your local machine:
+  ```bash
+  git clone https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10.git
+  ```
+- To write the localization code to the ESP32, you can open each of the `.ino` code in `driving-with-esp32/esp32_code` directory using Arduino IDE and upload it to the ESP32 tags. To use the more reliable localization, follow the instructions [here](https://github.com/kk9six/dw3000) to upload the code present in `driving-with-esp32/esp32_code_v2` directory.
+- To write the code to IMU, you can simly run the following command in Jetson's terminal:
+  ```bash
+  cd ./driving-with-esp32/IMUcode/
+  bash compile_imu.sh
+  ```
+- Since we are replacing the GPS coordinates with ESP32 coordinates, we need to replace the `vehicle.py` file in the donkeycar framework with the one present in `driving-with-esp32/vehicle.py`. Use the following command to do so:
+  ```bash
+  cp ./driving-with-esp32/vehicle.py /home/jetson/projects/donkeycar/donkeycar/vehicle.py
+  ```
+### Plotting Live Location from ESP32:
+- As seen in the video above, we can plot the live location of the ESP32 tag using the code present in `driving-with-esp32/location_tag.py`. 
+- To run this code, use the following command:
+  ```bash
+  cd ./driving-with-esp32/
+  python3 location_tag.py
+  ```
+- Make sure that the thrid ESP32 anchor is connected to a power bank.
+### Driving the Car with ESP32:
+- To drive the car using ESP32 triangulation, you can simply run the GPS code. Run the following command in the Jetson Terminal:
+  ```bash
+  cd ./driving-with-esp32/
+  python3 manage.py drive
+  ```
+- Steps to run the car:
+  - First, press the "B" button to reset the IMU readings.
+  - Then, press "Y" to generate the waypoints to the ESP32 tag.
+  - Then, press "X" to load the path.
+  - Finally press the "Start" button to start driving the car towards the ESP32 tag.
+- The above key mappings can be found in `driving-with-esp32/myconfig.py`.
+
+### Driving the Car with Aruco Marker:
+> **TODO**: Jason please add the steps: Pulling the container, copying over the code, running ROS2 using bash script.
+
+## Code Documentation
 ### Driving with ESP32
 The directory `driving-with-esp32` contains all the code needed to drive the car. This part of the project is divided into three parts:
 1. **ESP32 Distancing**: 
@@ -114,14 +167,15 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
     <div align="center">
       <img src="media/images/ESP32/esp32-comm-protocol.png" width="500" alt="ESP32 Communication Protocol">
     </div>
-    This can be summarized as follows:
-  - First the tag T1 sends a request packet for distancing to the anchor P.
-  - The anchor P then sends a response packet to T1. T1 measures the time taken for the response and calculates the distance to the anchor.
-  - T1 sends a clearance packet to T2, which is the second tag on the car.
-  - T2 then sends a request packet to the anchor P.
-  - The anchor P then sends a response packet to T2. T2 measures the time taken for the response and calculates the distance to the anchor.
-  - T2 then sends a clearance packet to T1, which is the first tag on the car.
-  - The code for Part 1 and 2 are written through arduino and can be found in the directory: `driving-with-esp32/esp32_code`
+  - This can be summarized as follows:
+    - First the tag T1 sends a request packet for distancing to the anchor P.
+    - The anchor P then sends a response packet to T1. T1 measures the time taken for the response and calculates the distance to the anchor.
+    - T1 sends a clearance packet to T2, which is the second tag on the car.
+    - T2 then sends a request packet to the anchor P.
+    - The anchor P then sends a response packet to T2. T2 measures the time taken for the response and calculates the distance to the anchor.
+    - T2 then sends a clearance packet to T1, which is the first tag on the car.
+  - The code for Part 1 and 2 are written through arduino and can be found in the directory: `driving-with-esp32/esp32_code_v2`.
+  - We were facing a lot of issues with the precision of the distance measurements, so we used the code from this repository: [https://github.com/kk9six/dw3000](https://github.com/kk9six/dw3000). We made a few modifications for our setup, which can be found in `driving-with-esp32/`.
 
 3. **ESP32 Triangulation**: 
   - We mounted two ESP32 tags on the car which will measure the distance to a thrid ESP32 anchor placed in the environment. 
@@ -141,17 +195,26 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
   - To cancel out this effect, we used an IMU sensor to compute the yaw of the car and correct the coordinates of the tag accordingly.
   - The code for this part is written through arduino and can be found in the directory: `driving-with-esp32/IMUcode`.
 
-5. **Driving with ESP32**: 
+5. **Waypoint Generation**:
+  - For the car to drive towards the tag, we need to generate waypoints for the car to follow.
+  - We have generated two types of paths, one is linear and the other is a curved path. These can be seen in the below image:
+    <div align="center">
+      <img src="media/images/ESP32/esp32-waypoint-gen.png" width="500" alt="ESP32 Waypoints">
+    </div>
+  - The curved path is basically a quadratic equation in such a manner that it passes through the tag and the car's initial position. The curvature of this path can be controlled by the parameter `PATH_CURVE_FACTOR` in `driving-with-esp32/myconfig.py`.
+  - A higher path curve factor will result in a lesser curvature.
+
+6. **Driving with ESP32**: 
   - Once we have the accurate coordinates of the tag, we used the GPS Donkeycar framework to drive the car towards the tag.
   - First we generate the waypoints for the car to the tag, and then pass this to the GPS Donkeycar framework to drive the car.
   - The code for this part is present in: `driving-with-esp32/manage.py`.
   - Further, we replaced the positions dumped by the GPS with the positions predicted by the ESP32 triangulation algorithm. This part of the code is present in `driving-with-esp32/vehicle.py`. Please note that this code should be put in the `donkeycar` directory of the donkeycar framework.
 
 ### Driving with Aruco Marker
-> **TODO**: Jason please add the code explanation here.
+> **TODO**: Jason please add a brief explanation of the code: cover how aruco marker detection is done, adding it as a node (add reference to the files in readme), adding the VESC node, computing steering and acceleration, and publisher-subscriber model for both VESC and Aruco nodes.
 
-## Parts and Hardware
-
+## Hardware Used
+### Parts
 | Part | Preview <img width="5"/> |  File |
 |------|--------------------------|----------|
 | **Mounting Board** | <img src="media/images/3D-Printed/board.png" width="300" alt="Mounting-board render"> | [DXF](media/stl-files/Electronics%20Mount%20Plate%20v1.dxf) |
