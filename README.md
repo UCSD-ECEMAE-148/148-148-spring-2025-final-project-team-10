@@ -185,8 +185,17 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
     </div>
   - Using this formula, we can calculate the coordinates of the tag using the distances measured by the two ESP32 tags on the car. 
   - The code for this part is in `driving-with-esp32/location_tag.py`.
-
-4. **ESP32-IMU Fusion**: 
+    
+4. **IMU Integration**:
+  - We are using nRF52840 Sense IMU with 6 DOF, which supports acceleration and gyroscope data in x, y, z axes.
+  - This figure shows the change in angular acceleration of as the IMU is rotated:
+    <div align="center">
+      <img src="media/images/IMU_figure2.JPG" width="500" alt="Triangulation Algorithm">
+    </div>
+  - The Z-axis gyroscope data (gz) is used to estimate the yaw angle (rotation around the vertical axis) by integrating angular velocity over time.
+  - The yaw is normalized to a 0–360° range and transmitted to the jetson via serial monitor every 50 ms.
+    
+5. **ESP32-IMU Fusion**: 
   - As the orientation of the car changes when it drives towards the tag, the reference coordinate for distance and angle measurements also changes. 
   - This effect can be seen in the below image, where the left diagram is the case when the car does not rotate and the right diagram is the case when the car rotates:
     <div align="center">
@@ -195,7 +204,7 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
   - To cancel out this effect, we used an IMU sensor to compute the yaw of the car and correct the coordinates of the tag accordingly.
   - The code for this part is written through arduino and can be found in the directory: `driving-with-esp32/IMUcode`.
 
-5. **Waypoint Generation**:
+6. **Waypoint Generation**:
   - For the car to drive towards the tag, we need to generate waypoints for the car to follow.
   - We have generated two types of paths, one is linear and the other is a curved path. These can be seen in the below image:
     <div align="center">
@@ -204,7 +213,7 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
   - The curved path is basically a quadratic equation in such a manner that it passes through the tag and the car's initial position. The curvature of this path can be controlled by the parameter `PATH_CURVE_FACTOR` in `driving-with-esp32/myconfig.py`.
   - A higher path curve factor will result in a lesser curvature.
 
-6. **Driving with ESP32**: 
+7. **Driving with ESP32**: 
   - Once we have the accurate coordinates of the tag, we used the GPS Donkeycar framework to drive the car towards the tag.
   - First we generate the waypoints for the car to the tag, and then pass this to the GPS Donkeycar framework to drive the car.
   - The code for this part is present in: `driving-with-esp32/manage.py`.
