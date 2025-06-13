@@ -238,6 +238,8 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
 | **ESP32 with UWB** | <img src="media/images/Parts/esp32.jpg" width="300" alt="ESP-32"> | [Product Link](https://www.makerfabs.com/esp32-uwb-dw3000.html?srsltid=AfmBOorf-qO5e5mbXH0PJVKdmqxx--euOzTTMy_9mlpG27S6Im0cnn02) |
 | **OAK-D Camera** | <img src="media/images/Parts/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
 | **IMU** | <img src="media/images/Parts/imu.webp" width="300" alt="ESP-32"> | [Product Link](https://wiki.seeedstudio.com/XIAO_BLE/) |
+| **Logitech Controller** | <img src="media/images/controller.webp" width="300" alt="ESP-32"> | [Product Link](https://www.logitechg.com/en-us/products/gamepads/f710-wireless-gamepad.940-000117.html?gclid=Cj0KCQjwz7uRBhDRARIsAFqjulkuKo41BBWfzpkCoHsG_LRd6WOvTYzetC7DRXhKwdPnabcZy49XMJ0aAhT_EALw_wcB) |
+
 
 ### Wiring
 <div align="center">
