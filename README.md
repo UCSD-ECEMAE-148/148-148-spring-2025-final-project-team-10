@@ -17,22 +17,23 @@
 
 <details>
   <summary>Table of Contents</summary>
+
   - [Team Members](#team-members)
   - [Abstract](#abstract)
   - [Goals](#goals)
     - [Must Have](#must-have)
     - [Nice to Have](#nice-to-have)
   - [Accomplishments](#accomplishments)
-  - [Challenges](#challenges)
-  - [Demo Video](#demo-video)
-  - [Hardware](#hardware)
+  - [Challenges Faced](#challenges-faced)
+    - [Triangulation with ESP32](#triangulation-with-esp32)
+    - [Driving with ESP32](#driving-with-esp32)
+    - [Aruco Marker Detection](#aruco-marker-detection)
+  - [Parts and Hardware](#parts-and-hardware)
     - [Wiring](#wiring)
-    - [Parts](#parts)
-  - [Software](#software)
-  - [How to Run (Step by Step)](#how-to-run-step-by-step)
   - [Acknowledgements](#acknowledgements)
   - [Contacts](#contacts)
-</details>
+
+  </details>
 
 
 ## Team Members
@@ -88,17 +89,66 @@ https://github.com/user-attachments/assets/7d87b73c-9c4e-48f1-9f4e-f30a59d7324a
 In this video, the car detects an Aruco marker, reads the ID of the marker to confirm weather its a valid user to track, determines the location and orientation of the marker and correspoindingly drive towards the marker. The steering and rotation of the car is controlled in real-time to ensure that the car is always facing the marker and is at-least 30cm away from the marker. Also the car is able to follow the marker even when it is moving around. 
 
 ## Challenges Faced
-- We were limited by low range (~10m) and sometimes we wouldn't get position data due to small antenna of the dw3000 chip. 
+- We were limited by low range (~15m) and sometimes we wouldn't get position data due to small antenna of the DW3000 chip. 
 - Even though our individual parts worked well, our location estimation varied a lot due to added uncertanities from all of them.
 - We faced issues in integrating the transition from driving with ESP32 localization and driving with Aruco marker in the donkeycar framework.
-- When following the Aruco marker, ROS2 was very laggy, we faced this issue in our lane-following assignment also. 
-  
+- When following the Aruco marker, ROS2 was very laggy, we faced this issue in our lane-following assignment also. Might need to use an updated Jetson or larger SD card.
 
-### Triangulation with ESP32
+## Code Documentation
+### Step-by-Step Running Instructions
 
 ### Driving with ESP32
+The directory `driving-with-esp32` contains all the code needed to drive the car. This part of the project is divided into three parts:
+1. **ESP32 Distancing**: 
+  - Before we can get to estimating coordinates of the tag, we first need to measure distance between two tags. 
+  - Below image shows the parameters and timing measurements we need to take care of while measuring distance:
+    <div align="center">
+      <img src="media/images/ESP32/esp32-distancing.png" width="500" alt="ESP32 Distance Measurement">
+    </div>
+  - In the above image, the anchor sends a packet to the tag, which then sends a response back to the anchor. 
+  - The anchor measures the time taken for the round trip and calculates the distance using the speed of light.
 
-### Aruco Marker Detection
+2. **Communication between ESP32**: 
+  - For determining position of the tag, we need two tags on the car which calls for developing a communication protocol between the two ESP32 tags. 
+  - The protocol is summarized in the below image:
+    <div align="center">
+      <img src="media/images/ESP32/esp32-comm-protocol.png" width="500" alt="ESP32 Communication Protocol">
+    </div>
+    This can be summarized as follows:
+  - First the tag T1 sends a request packet for distancing to the anchor P.
+  - The anchor P then sends a response packet to T1. T1 measures the time taken for the response and calculates the distance to the anchor.
+  - T1 sends a clearance packet to T2, which is the second tag on the car.
+  - T2 then sends a request packet to the anchor P.
+  - The anchor P then sends a response packet to T2. T2 measures the time taken for the response and calculates the distance to the anchor.
+  - T2 then sends a clearance packet to T1, which is the first tag on the car.
+  - The code for Part 1 and 2 are written through arduino and can be found in the directory: `driving-with-esp32/esp32_code`
+
+3. **ESP32 Triangulation**: 
+  - We mounted two ESP32 tags on the car which will measure the distance to a thrid ESP32 anchor placed in the environment. 
+  - The image below shows the triangulation algorithm used to determine the coordinates of the tag:
+    <div align="center">
+      <img src="media/images/ESP32/esp32-localization.png" width="500" alt="Triangulation Algorithm">
+    </div>
+  - Using this formula, we can calculate the coordinates of the tag using the distances measured by the two ESP32 tags on the car. 
+  - The code for this part is in `driving-with-esp32/location_tag.py`.
+
+4. **ESP32-IMU Fusion**: 
+  - As the orientation of the car changes when it drives towards the tag, the reference coordinate for distance and angle measurements also changes. 
+  - This effect can be seen in the below image, where the left diagram is the case when the car does not rotate and the right diagram is the case when the car rotates:
+    <div align="center">
+      <img src="media/images/ESP32/esp32-imu-fusion.png" width="500" alt="ESP32 IMU Fusion">
+    </div>
+  - To cancel out this effect, we used an IMU sensor to compute the yaw of the car and correct the coordinates of the tag accordingly.
+  - The code for this part is written through arduino and can be found in the directory: `driving-with-esp32/IMUcode`.
+
+5. **Driving with ESP32**: 
+  - Once we have the accurate coordinates of the tag, we used the GPS Donkeycar framework to drive the car towards the tag.
+  - First we generate the waypoints for the car to the tag, and then pass this to the GPS Donkeycar framework to drive the car.
+  - The code for this part is present in: `driving-with-esp32/manage.py`.
+  - Further, we replaced the positions dumped by the GPS with the positions predicted by the ESP32 triangulation algorithm. This part of the code is present in `driving-with-esp32/vehicle.py`. Please note that this code should be put in the `donkeycar` directory of the donkeycar framework.
+
+### Driving with Aruco Marker
+> **TODO**: Jason please add the code explanation here.
 
 ## Parts and Hardware
 
@@ -113,17 +163,23 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 | **ESP32 Mount – Extension** | <img src="media/images/3D-Printed/e1.png" width="300" alt="ESP32 extension"> | [STL](media/stl-files/extension.stl) |
 | **ESP32 Case** | <img src="media/images/3D-Printed/esp2.png" width="300" alt="ESP32 case"> | [STL](media/stl-files/esp_case_2.stl) |
 | **Power-Bank & ESP32 Case** | <img src="media/images/3D-Printed/pbc1.png" width="300" alt="Power-bank case"> | [Bottom STL](media/stl-files/power_bank_case_1.stl) • [Top STL](media/stl-files/power_bank_case_2.stl) |
-| **ESP32 with UWB** | <img src="media/images/esp32.jpg" width="300" alt="ESP-32"> | [Product Link](https://www.makerfabs.com/esp32-uwb-dw3000.html?srsltid=AfmBOorf-qO5e5mbXH0PJVKdmqxx--euOzTTMy_9mlpG27S6Im0cnn02) |
-| **OAK-D Camera** | <img src="media/images/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
-| **IMU** | <img src="media/images/imu.webp" width="300" alt="ESP-32"> | [Product Link](https://wiki.seeedstudio.com/XIAO_BLE/) |
+| **ESP32 with UWB** | <img src="media/images/Parts/esp32.jpg" width="300" alt="ESP-32"> | [Product Link](https://www.makerfabs.com/esp32-uwb-dw3000.html?srsltid=AfmBOorf-qO5e5mbXH0PJVKdmqxx--euOzTTMy_9mlpG27S6Im0cnn02) |
+| **OAK-D Camera** | <img src="media/images/Parts/oakd.webp" width="300" alt="ESP-32"> | [Product Link](https://shop.luxonis.com/products/oak-d-lite-1?variant=42583102456031) |
+| **IMU** | <img src="media/images/Parts/imu.webp" width="300" alt="ESP-32"> | [Product Link](https://wiki.seeedstudio.com/XIAO_BLE/) |
 
 ### Wiring
 <div align="center">
   <img src="media/images/mae148wiring.png" width="500" alt="Wiring">
 </div>
 
+## Gantt Chart
+<div align="center">
+  <img src="media/images/gantt-chart.png" width="500" alt="Gantt Chart">
+</div>
+
 ## Acknowledgements
-Special thanks to Professor Jack Silberman and our TAs, Alex and Winston
+Special thanks to Professor Jack Silberman and our TAs, Alex and Winston for the continous support and guidance throughout the quarter.
+
 ## Contacts
 - Pushkal Mishra (pumishra@ucsd.edu)
 - Efe Erturk (eerturk@ucsd.edu)
