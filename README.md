@@ -148,87 +148,18 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 
 ### Driving the Car with Aruco Marker:
 > **TODO**: Jason please add the steps: Pulling the container, copying over the code, running ROS2 using bash script.
-> Step 1: Pull the Robocar Docker Image
-```bash
-docker pull djnighti/ucsd_robocar:devel
-```
-🖥️ Step 2: Enable X11 Forwarding
+> Step 1: Follow the ECE/MAE 148 document to pull the Robocar Docker Image and set it up with ROS2
 
-This allows ROS2 nodes that rely on GUI output (like image windows) to display properly.
-
-On your host machine:
+Now create and launch Docker container:
 ```bash
-ssh -X jetson@<jetson_ip_address>
-```
-On the Jetson (do once):
-```bash
-sudo usermod -aG docker ${USER}
-su - ${USER}
-```
-Now test X11:
-```bash
-xeyes  # If googly eyes appear, you're good!
-```
-Optional: You may need to run this if facing issues:
-```bash
-sudo apt-get install --reinstall xserver-xorg
-sudo chmod 777 .Xauthority
-```
-Step 3: Update Docker Daemon (NVIDIA Runtime Support)
-```bash
-sudo rm /etc/docker/daemon.json
-sudo nano /etc/docker/daemon.json
-```
-Paste:
-```bash
-{
-  "runtimes": {
-    "nvidia": {
-      "path": "nvidia-container-runtime",
-      "runtimeArgs": []
-    }
-  },
-  "default-runtime": "nvidia"
-}
-```
-Then:
-```bash
-sudo reboot now
-```
-Step 4: Add robocar_docker Function
-```bash
-gedit ~/.bashrc
-```
-Append this function:
-```bash
-robocar_docker () {
-  docker run \
-    --name ${1} \
-    -it \
-    --privileged \
-    --net=host \
-    -e DISPLAY=$DISPLAY \
-    -v /dev/bus/usb:/dev/bus/usb \
-    --device-cgroup-rule='c 189:* rmw' \
-    --device /dev/video0 \
-    --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
-    djnighti/ucsd_robocar:${2:-devel}
-}
-```
-Apply changes:
-```bash
-source ~/.bashrc
-```
-Now launch Docker container:
-
 robocar_docker test_container
+```
 
-In new terminals:
 ```bash
 docker start test_container
 docker exec -it test_container bash
 ```
-Step 5: Create ROS2 Package for Aruco
+Step 2: Create ROS2 Package for Aruco
 
 Inside the container:
 ```bash
@@ -272,7 +203,7 @@ setup(
 ```
 Add __init__.py files in both aruco_marker/ and any submodules.
 
-Step 6: Create Launch File
+Step 3: Create Launch File
 
 Create launch/duo_node.launch.py:
 ```bash
@@ -295,7 +226,7 @@ def generate_launch_description():
         )
     ])
 ```
-Step 7: Build, Source, and Launch
+Step 4: Build, Source, and Launch
 
 From inside Docker:
 ```bash
@@ -305,7 +236,7 @@ colcon build
 source install/setup.bash
 ros2 launch aruco_marker duo_node_.launch.py
 ```
-Step 8 (Optional but recommend): Create a bash script for easy source, build, and launch
+Step 5 (Optional but recommend): Create a bash script for easy source, build, and launch
 
 Create a bash script
 ```bash
@@ -321,7 +252,7 @@ source install/setup.bash
 ros2 launch aruco_marker duo_nodes.launch.py
 ```
 
-Step 9: use run_ros2 inside ros2_ws/src/aruco_marker/aruco_marker
+Step 6: use run_ros2 inside ros2_ws/src/aruco_marker/aruco_marker
 
 ```bash
 bash run_ros2.sh
@@ -400,6 +331,39 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
 
 ### Driving with Aruco Marker
 > **TODO**: Jason please add a brief explanation of the code: cover how aruco marker detection is done, adding it as a node (add reference to the files in readme), adding the VESC node, computing steering and acceleration, and publisher-subscriber model for both VESC and Aruco nodes.
+The self-driving system consists of two ROS 2 nodes:
+
+oakd_aruco_node.py
+
+This node uses an OAK-D camera to detect Aruco markers and estimate their 3D position and orientation.
+
+- Aruco marker size is known (14 cm), allowing cv2.aruco.estimatePoseSingleMarkers() to calculate the translation vector (tvec) and rotation vector (rvec).
+
+- From the translation vector, we extract:
+
+  - z = forward distance (used to determine speed)
+
+  - x = horizontal offset (used to compute yaw angle)
+
+- The node converts yaw angle into angular.z in a Twist message and forward distance into linear.x.
+
+- Publishes Twist messages to /cmd_vel.
+
+- Stops publishing if the detected marker is too close.
+
+vesc_twist_node.py
+
+This node subscribes to /cmd_vel and controls the VESC motor and steering via the vesc_submodule:
+
+- Converts linear.x (distance) into throttle (RPM), clamped between minimum and maximum values.
+
+- Converts angular.z (yaw angle) from radians to degrees, and remaps to a steering servo PWM value between 0.0 and 1.0.
+
+- Applies polarity and remapping parameters (tunable via ROS parameters).
+
+- Commands are sent to the VESC over UART.
+
+Together, these two nodes implement a reactive behavior: when an Aruco marker is detected, the Jetson computes its relative position and orientation in space, calculates the required heading adjustment, and drives toward it while avoiding collisions.
 
 ## Hardware Used
 ### Parts
