@@ -240,6 +240,7 @@ Step 5 (Optional but recommend): Create a bash script for easy source, build, an
 
 Create a bash script
 ```bash
+cd ~/ros2_ws/aruco_marker
 touch run_ros2.sh
 ```
 
@@ -333,35 +334,55 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
 > **TODO**: Jason please add a brief explanation of the code: cover how aruco marker detection is done, adding it as a node (add reference to the files in readme), adding the VESC node, computing steering and acceleration, and publisher-subscriber model for both VESC and Aruco nodes.
 The self-driving system consists of two ROS 2 nodes:
 
-oakd_aruco_node.py
+1. **oakd_aruco_node.py**
 
-This node uses an OAK-D camera to detect Aruco markers and estimate their 3D position and orientation.
-
-- Aruco marker size is known (14 cm), allowing cv2.aruco.estimatePoseSingleMarkers() to calculate the translation vector (tvec) and rotation vector (rvec).
-
-- From the translation vector, we extract:
-
-  - z = forward distance (used to determine speed)
-
-  - x = horizontal offset (used to compute yaw angle)
-
-- The node converts yaw angle into angular.z in a Twist message and forward distance into linear.x.
-
-- Publishes Twist messages to /cmd_vel.
-
+- This node uses an OAK-D camera to detect Aruco markers and estimate their 3D position and orientation.
+- This node file allow evey aruco marker to be considered as valid marker.
+- You can generate your own marker using the OpenCV Aruco library.
+- Aruco marker size is known (14 cm), allowing `cv2.aruco.estimatePoseSingleMarkers()` to calculate the translation vector (tvec) and rotation vector (rvec).
+- Make sure the printed marker size is near 14cm by 14cm.
+  <div align="center">
+    <img src="media/images/aruco_marker_23.png" width="500" alt="Aruco Marker Image">
+  </div>
+- From the translation vector, we extract the following parameters from the aruco marker detection:
+  - z = forward distance (used to determine rpm)
+  - x = horizontal offset (used to compute steering value)
+- The node converts yaw angle in radians into angular.z  and forward distance into linear.x, then publishes them in a Twist Interface
+- Publishes Twist messages to ```/cmd_vel``` topic so that other node files can subscribe the motot value in this topic.
 - Stops publishing if the detected marker is too close.
+- Publishing 0.5 steering (center) and 0 rpm if not detecting any markers, 
 
-vesc_twist_node.py
+2. **Running the oakd_aruco_node.py**
 
-This node subscribes to /cmd_vel and controls the VESC motor and steering via the vesc_submodule:
+- run it with ```bash run_ros2.sh```
+- Then on the terminal there should be distance and angle message printing. Show the aruco marker in front of the oakd camera, and the value should be changing.
+- The maximum range line of sight of the camera is roughly -20 to +20 degrees, but it is kind of unstable when the marker get close to 20 degree offset.
 
+3. **Checking if the message is published to the topic**
+
+- run ```ros2 topic echo /cmd_vel``` on a separate terminal, then you should see linear.x and angular.z being published to the topic.
+
+4. **vesc_twist_node.py**
+
+- This node subscribes to /cmd_vel and controls the VESC motor and steering via the vesc_submodule:
 - Converts linear.x (distance) into throttle (RPM), clamped between minimum and maximum values.
-
 - Converts angular.z (yaw angle) from radians to degrees, and remaps to a steering servo PWM value between 0.0 and 1.0.
-
 - Applies polarity and remapping parameters (tunable via ROS parameters).
-
 - Commands are sent to the VESC over UART.
+
+5. **Common issue**
+
+- If launching the node files result in "could not connect to vesc" please re-run the bash script to debug. Vesc sometimes break down magically and re-running it can fix the issue.
+- Check if VESC and Camera is plugeged directly into jetson.
+- Check battery voltage level, this can cause any issue.
+- If you feel like running the bash script does not make a change to the behavior, check the memory storage usage on the SD card.
+- If docker break down such as xeyes not responding, quit the docker, stop the docker, then exit jetson, reboot jetson, re-ssh, restart docker, try xeyes again. If this does not solve the issue, turn off jetson and give it a couple minutes then continue working later.
+- If VESC behave weirdly, please use the VESC tool to re-tune the VESC.
+
+6. **Future potential**
+- PID implementation for aruco marker autonomous driving.
+- Pre collision braking system using LiDar by creating another node file to publish more up-to-time distance.
+- Modify ```vesc_twist_node.py``` to include the pre-collison braking algorithm.
 
 Together, these two nodes implement a reactive behavior: when an Aruco marker is detected, the Jetson computes its relative position and orientation in space, calculates the required heading adjustment, and drives toward it while avoiding collisions.
 
