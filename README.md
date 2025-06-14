@@ -147,10 +147,9 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 - The above key mappings can be found in `driving-with-esp32/myconfig.py`.
 
 ### Driving the Car with Aruco Marker:
-> **TODO**: Jason please add the steps: Pulling the container, copying over the code, running ROS2 using bash script.
-> Step 1: Follow the ECE/MAE 148 document to pull the Robocar Docker Image and set it up with ROS2
+- Step 1: Follow the ECE/MAE 148 document to pull the Robocar Docker Image and set it up with ROS2
 
-Now create and launch Docker container:
+  - Now create and launch Docker container:
 ```bash
 robocar_docker test_container
 ```
@@ -159,14 +158,14 @@ robocar_docker test_container
 docker start test_container
 docker exec -it test_container bash
 ```
-Step 2: Create ROS2 Package for Aruco
+- Step 2: Create ROS2 Package for Aruco
 
-Inside the container:
+  - Inside the container:
 ```bash
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python aruco_marker --dependencies rclpy sensor_msgs geometry_msgs std_msgs
 ```
-Then clone your Python node scripts:
+  - Then clone your Python node scripts:
 ```bash
 cd aruco_marker
 mkdir aruco_marker
@@ -176,7 +175,7 @@ git clone <oakd_aruco_node.py_url> oakd_aruco_node.py
 git clone <vesc_twist_node.py_url> esc_twist_node.py
 git clone <vesc_submodule_repo_url> vesc_submodule
 ```
-Update setup.py:
+  - Update setup.py:
 ```bash
 setup(
     name=package_name,
@@ -201,11 +200,11 @@ setup(
     },
 )
 ```
-Add __init__.py files in both aruco_marker/ and any submodules.
+  - Add __init__.py files in both aruco_marker/ and any submodules.
 
-Step 3: Create Launch File
+- Step 3: Create Launch File
 
-Create launch/duo_node.launch.py:
+  - Create launch/duo_node.launch.py:
 ```bash
 from launch import LaunchDescription
 from launch_ros.actions import Node
@@ -226,9 +225,9 @@ def generate_launch_description():
         )
     ])
 ```
-Step 4: Build, Source, and Launch
+- Step 4: Build, Source, and Launch
 
-From inside Docker:
+  - From inside Docker:
 ```bash
 source_ros2
 cd ~/ros2_ws
@@ -236,15 +235,15 @@ colcon build
 source install/setup.bash
 ros2 launch aruco_marker duo_node_.launch.py
 ```
-Step 5 (Optional but recommend): Create a bash script for easy source, build, and launch
+- Step 5 (Optional but recommend): Create a bash script for easy source, build, and launch
 
-Create a bash script
+  - Create a bash script
 ```bash
 cd ~/ros2_ws/aruco_marker
 touch run_ros2.sh
 ```
 
-Content in the bash script
+  - Content in the bash script
 ```bash
 #!/bin/bash
 source install/setup.bash
@@ -253,12 +252,13 @@ source install/setup.bash
 ros2 launch aruco_marker duo_nodes.launch.py
 ```
 
-Step 6: use run_ros2 inside ros2_ws/src/aruco_marker/aruco_marker
+- Step 6: use run_ros2 inside ros2_ws/src/aruco_marker/aruco_marker
 
+  - You should now see both the Aruco detection and the VESC command node running simultaneously.
 ```bash
 bash run_ros2.sh
 ```
-You should now see both the Aruco detection and the VESC command node running simultaneously.
+
 
 ## Code Documentation
 ### Driving with ESP32
@@ -331,11 +331,8 @@ The directory `driving-with-esp32` contains all the code needed to drive the car
   - Further, we replaced the positions dumped by the GPS with the positions predicted by the ESP32 triangulation algorithm. This part of the code is present in `driving-with-esp32/vehicle.py`. Please note that this code should be put in the `donkeycar` directory of the donkeycar framework.
 
 ### Driving with Aruco Marker
-> **TODO**: Jason please add a brief explanation of the code: cover how aruco marker detection is done, adding it as a node (add reference to the files in readme), adding the VESC node, computing steering and acceleration, and publisher-subscriber model for both VESC and Aruco nodes.
-The self-driving system consists of two ROS 2 nodes:
-
+The directory `home/projects/ros2_ws/src/aruco_marker` contains all the code needed to drive the car autnomously using aruco marker. This part of the project is divided into two parts:
 1. **oakd_aruco_node.py**
-
 - This node uses an OAK-D camera to detect Aruco markers and estimate their 3D position and orientation.
 - This node file allow evey aruco marker to be considered as valid marker.
 - You can generate your own marker using the OpenCV Aruco library.
@@ -353,17 +350,14 @@ The self-driving system consists of two ROS 2 nodes:
 - Publishing 0.5 steering (center) and 0 rpm if not detecting any markers, 
 
 2. **Running the oakd_aruco_node.py**
-
 - run it with ```bash run_ros2.sh```
 - Then on the terminal there should be distance and angle message printing. Show the aruco marker in front of the oakd camera, and the value should be changing.
 - The maximum range line of sight of the camera is roughly -20 to +20 degrees, but it is kind of unstable when the marker get close to 20 degree offset.
 
 3. **Checking if the message is published to the topic**
-
 - run ```ros2 topic echo /cmd_vel``` on a separate terminal, then you should see linear.x and angular.z being published to the topic.
 
 4. **vesc_twist_node.py**
-
 - This node subscribes to /cmd_vel and controls the VESC motor and steering via the vesc_submodule:
 - Converts linear.x (distance) into throttle (RPM), clamped between minimum and maximum values.
 - Converts angular.z (yaw angle) from radians to degrees, and remaps to a steering servo PWM value between 0.0 and 1.0.
@@ -371,7 +365,6 @@ The self-driving system consists of two ROS 2 nodes:
 - Commands are sent to the VESC over UART.
 
 5. **Common issue**
-
 - If launching the node files result in "could not connect to vesc" please re-run the bash script to debug. Vesc sometimes break down magically and re-running it can fix the issue.
 - Check if VESC and Camera is plugeged directly into jetson.
 - Check battery voltage level, this can cause any issue.
@@ -381,10 +374,11 @@ The self-driving system consists of two ROS 2 nodes:
 
 6. **Future potential**
 - PID implementation for aruco marker autonomous driving.
-- Pre collision braking system using LiDar by creating another node file to publish more up-to-time distance.
+- Improved pre-collision braking system using LiDar by creating another node file to publish more up-to-time distance.
 - Modify ```vesc_twist_node.py``` to include the pre-collison braking algorithm.
 
-Together, these two nodes implement a reactive behavior: when an Aruco marker is detected, the Jetson computes its relative position and orientation in space, calculates the required heading adjustment, and drives toward it while avoiding collisions.
+7. **Summary**
+- Together, these two nodes implement a reactive behavior: when an Aruco marker is detected, the Jetson computes its relative position and orientation in space, calculates the required heading adjustment, and drives toward it while avoiding collisions.
 
 ## Hardware Used
 ### Parts
