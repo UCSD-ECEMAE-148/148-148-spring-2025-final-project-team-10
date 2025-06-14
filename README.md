@@ -147,87 +147,35 @@ In this video, the car detects an Aruco marker, reads the ID of the marker to co
 - The above key mappings can be found in `driving-with-esp32/myconfig.py`.
 
 ### Driving the Car with Aruco Marker:
-- Step 1: Follow the ECE/MAE 148 document to pull the Robocar Docker Image and set it up with ROS2
+- Follow the [ECE/MAE 148 document](https://docs.google.com/document/d/1Onft0sIWhEd9UH7fItJ0atC1hKnxpTxKKmUFHtqC-sA/edit?tab=t.0) (Section 4) to pull the Robocar Docker Image and set it up with ROS2
 
-  - Now create and launch Docker container:
+- Now create and launch Docker container:
 ```bash
 robocar_docker test_container
-```
-
-```bash
 docker start test_container
 docker exec -it test_container bash
 ```
-- Step 2: Create ROS2 Package for Aruco
-
-  - Inside the container:
+- Create ROS2 Package for Aruco
 ```bash
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python aruco_marker --dependencies rclpy sensor_msgs geometry_msgs std_msgs
 ```
-  - Then clone your Python node scripts:
+- Then clone your Python node scripts:
 ```bash
 cd aruco_marker
 mkdir aruco_marker
 cd aruco_marker
-# Add your Python scripts here and clone the vesc_submodule:
-git clone <oakd_aruco_node.py_url> oakd_aruco_node.py
-git clone <vesc_twist_node.py_url> esc_twist_node.py
-git clone <vesc_submodule_repo_url> vesc_submodule
+
+git clone https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/blob/main/aruco_marker/aruco_marker/oakd_aruco_node.py oakd_aruco_node.py
+git clone https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/blob/main/aruco_marker/aruco_marker/vesc_twist_node.py esc_twist_node.py
+git clone https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/tree/main/aruco_marker/aruco_marker/vesc_submodule vesc_submodule
 ```
-  - Update setup.py:
-```bash
-setup(
-    name=package_name,
-    version='0.0.0',
-    packages=[package_name, f'{package_name}.vesc_submodule'],
-    data_files=[
-        ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', glob('launch/*.launch.py')),
-    ],
-    install_requires=['setuptools'],
-    zip_safe=True,
-    maintainer='yourname',
-    maintainer_email='your@email.com',
-    description='ArUco detection and VESC control node',
-    license='TODO',
-    tests_require=['pytest'],
-    entry_points={
-        'console_scripts': [
-            'oakd_aruco_node = aruco_marker.oakd_aruco_node:main',
-            'vesc_twist_node = aruco_marker.vesc_twist_node:main'
-        ],
-    },
-)
-```
-  - Add __init__.py files in both aruco_marker/ and any submodules.
+- Make sure to copy the setup and launch files from the repository to the correct directories:
+  - The setup.py file is located here: [https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/blob/main/aruco_marker/setup.py](https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/blob/main/aruco_marker/setup.py)
 
-- Step 3: Create Launch File
+  - The Launch File for both nodes are present here: [https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/blob/main/aruco_marker/launch/duo_nodes.launch.py](https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/blob/main/aruco_marker/launch/duo_nodes.launch.py)
 
-  - Create launch/duo_node.launch.py:
-```bash
-from launch import LaunchDescription
-from launch_ros.actions import Node
-
-def generate_launch_description():
-    return LaunchDescription([
-        Node(
-            package='aruco_marker',
-            executable='oakd_aruco_node',
-            name='oakd_tracker',
-            output='screen'
-        ),
-        Node(
-            package='aruco_marker',
-            executable='vesc_twist_node',
-            name='vesc_controller',
-            output='screen'
-        )
-    ])
-```
-- Step 4: Build, Source, and Launch
-
-  - From inside Docker:
+- Run the following commands to build, source, and launch (from inside docker):
 ```bash
 source_ros2
 cd ~/ros2_ws
@@ -235,30 +183,10 @@ colcon build
 source install/setup.bash
 ros2 launch aruco_marker duo_node_.launch.py
 ```
-- Step 5 (Optional but recommend): Create a bash script for easy source, build, and launch
-
-  - Create a bash script
-```bash
-cd ~/ros2_ws/aruco_marker
-touch run_ros2.sh
-```
-
-  - Content in the bash script
-```bash
-#!/bin/bash
-source install/setup.bash
-colcon build --packages-select aruco_marker
-source install/setup.bash
-ros2 launch aruco_marker duo_nodes.launch.py
-```
-
-- Step 6: use run_ros2 inside ros2_ws/src/aruco_marker/aruco_marker
-
-  - You should now see both the Aruco detection and the VESC command node running simultaneously.
+- You can also use the bash script to compile and run the ROS2 nodes for faster prototyping located [here](https://github.com/UCSD-ECEMAE-148/148-spring-2025-final-project-team-10/blob/main/aruco_marker/run_ros2.sh):
 ```bash
 bash run_ros2.sh
 ```
-
 
 ## Code Documentation
 ### Driving with ESP32
@@ -377,8 +305,6 @@ The directory `home/projects/ros2_ws/src/aruco_marker` contains all the code nee
 - Improved pre-collision braking system using LiDar by creating another node file to publish more up-to-time distance.
 - Modify ```vesc_twist_node.py``` to include the pre-collison braking algorithm.
 
-7. **Summary**
-- Together, these two nodes implement a reactive behavior: when an Aruco marker is detected, the Jetson computes its relative position and orientation in space, calculates the required heading adjustment, and drives toward it while avoiding collisions.
 
 ## Hardware Used
 ### Parts
