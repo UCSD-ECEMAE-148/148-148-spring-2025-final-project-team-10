@@ -44,11 +44,11 @@
   </details>
 
 
-## Team Members
+## Team Members (left to right)
+- **Pushkal Mishra** | ECE: PhD in Wireless Sensing and ML
 - **Efe Erturk** | ECE: BS in Electrical Engineering 
 - **Etka Uzun** | MAE: BS in Aerospace Engineering
 - **Junran "Jason" Wang** | ECE: BS in Computer Engineering
-- **Pushkal Mishra** | ECE: PhD in Wireless Sensing and ML
   
 ## Abstract
 In this project, we developed an autonomous car following system using Ultra-Wide Band (UWB) technology and Aruco markers. The system is designed to enable a car to autonomously follow a UWB-enabled ESP32 tag and identify the tag with an Aruco marker. Additionally, the car can also follow the aruco marker once it is in the field-of-view. The project integrates various hardware components: NVIDIA Jetson Nano, OAK-D Lite camera, 3 ESP32 microcontroller with UWB support and IMU sensor, to achieve real-time distance measurement and control.
