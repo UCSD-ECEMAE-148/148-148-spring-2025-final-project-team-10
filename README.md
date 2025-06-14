@@ -45,7 +45,7 @@
 
 
 ## Team Members
-- **Efe Erturk** | ECE: BS in Computer Engineering 
+- **Efe Erturk** | ECE: BS in Electrical Engineering 
 - **Etka Uzun** | MAE: BS in Aerospace Engineering
 - **Junran "Jason" Wang** | ECE: BS in Computer Engineering
 - **Pushkal Mishra** | ECE: PhD in Wireless Sensing and ML
